@@ -14,6 +14,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import PhoneEnabledIcon from '@material-ui/icons/PhoneEnabled';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
+import { Offer } from '../Offer/Offer';
+import zIndex from '@material-ui/core/styles/zIndex';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
@@ -41,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(4)
     },
     Appbar: {
-      background: '#091527',
+      backgroundColor: '#091527',
       height: '72px',
       maxWidth: '100%'
     },
@@ -112,6 +114,7 @@ export function Menu() {
           </div>
         </Toolbar>
       </AppBar>
+      <Offer />
     </div>
   );
 }
