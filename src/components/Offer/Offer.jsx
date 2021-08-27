@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Button, Container, Grid, Paper, Typography } from '@material-ui/core';
+import { Button, Container, Grid, Typography } from '@material-ui/core';
 import HeroYatch from './HeroYatch.png';
 import Checkin from './checkin/Checkin';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -100,7 +100,10 @@ export function Offer() {
             md={8}
             style={{ display: 'flex', alignItems: 'center', gap: '4rem' }}
           >
-            <Grid item style={{ display: 'flex' }}>
+            <Grid
+              item
+              style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+            >
               <Checkin />
               <Checkin />
             </Grid>

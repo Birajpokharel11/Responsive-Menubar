@@ -1,10 +1,13 @@
 import React from 'react';
-import { Menu } from './components/menubar/Menu';
+import Routes from './routes';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 export default function App() {
   return (
     <>
-      <Menu />
+      <Router>
+        <Routes />
+      </Router>
     </>
   );
 }
