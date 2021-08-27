@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Button, Paper, Typography } from '@material-ui/core';
+import { Button, Container, Grid, Paper, Typography } from '@material-ui/core';
 import HeroYatch from './HeroYatch.png';
 import Checkin from './checkin/Checkin';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -14,13 +14,17 @@ const useStyles = makeStyles((theme) =>
       background: '#F7F7F7',
       height: '122px'
     },
-    Yatch: {
-      MaxWidth: '100%',
-      height: '22rem'
+    ImageTextPositioner: {
+      position: 'relative'
     },
+    Yatch: {
+      width: ' 100%',
+      height: ' 671px'
+    },
+
     CheckIn: {
       height: '132px',
-      width: '100%',
+      width: '100vw',
       backgroundColor: '#071529',
       paddingLeft: '100px',
       display: 'flex',
@@ -34,7 +38,7 @@ const useStyles = makeStyles((theme) =>
       color: ' #FFFFFF'
     },
     margin: {
-      width: '190px',
+      minWidth: '190px',
       height: '52px',
       borderRadius: '4px',
       textTransform: 'none'
@@ -46,57 +50,111 @@ const useStyles = makeStyles((theme) =>
     Book: { background: ' rgba(245, 240, 228, 1)', color: '#2A398D' },
     MiddleText: {
       fontWeight: '600'
+    },
+    Container: {
+      padding: '0%',
+      position: 'relative'
+    },
+    ImageText: {
+      position: 'absolute',
+      left: '4.94%',
+      top: '62%',
+
+      fontFamily: ' Lato',
+      fontStyle: 'normal',
+      fontWeight: '600',
+      fontSize: ' 60px',
+      color: '#FFFFFF'
+    },
+    ImageText2: {
+      position: 'absolute',
+      left: '4.94%',
+      top: '72.23%',
+      fontFamily: ' Lato',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: ' 24px',
+      color: '#FFFFFF'
     }
   })
 );
 
 export function Offer() {
   const classes = useStyles();
-
   return (
-    <div>
+    <Container maxWidth={false} className={classes.Container}>
       <img src={HeroYatch} alt="HeroYatch" className={classes.Yatch} />
-      <Paper className={classes.CheckIn} square>
-        <Checkin />
-        <Typography className={classes.Typography}>
-          From{' '}
-          <span className={clsx(classes.Typography, classes.MiddleText)}>
-            €135.000
-          </span>{' '}
-          to{' '}
-          <span className={clsx(classes.Typography, classes.MiddleText)}>
-            {' '}
-            €145.000
-          </span>
-        </Typography>
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '1rem',
-            flexGrow: 1
-          }}
+      <Typography className={classes.ImageText}>ARESTEAS</Typography>
+      <Typography className={classes.ImageText2}>
+        166m | Motor Yacht | 10 Guests
+      </Typography>
+      <Container maxWidth={false} className={classes.CheckIn}>
+        <Grid
+          container
+          spacing={2}
+          style={{ display: 'flex', alignItems: 'center' }}
         >
-          <FavoriteIcon style={{ color: 'White' }} />
-          <Button
-            variant="outlined"
-            size="large"
-            color="primary"
-            className={clsx(classes.margin, classes.enquire)}
+          <Grid
+            item
+            container
+            md={8}
+            style={{ display: 'flex', alignItems: 'center', gap: '4rem' }}
           >
-            Enquire
-          </Button>
-          <Button
-            variant="outlined"
-            size="large"
-            color="primary"
-            className={clsx(classes.margin, classes.Book)}
+            <Grid item style={{ display: 'flex' }}>
+              <Checkin />
+              <Checkin />
+            </Grid>
+            <Grid item>
+              <Typography className={classes.Typography}>
+                From{' '}
+                <span className={clsx(classes.Typography, classes.MiddleText)}>
+                  €135.000
+                </span>{' '}
+                to{' '}
+                <span className={clsx(classes.Typography, classes.MiddleText)}>
+                  {' '}
+                  €145.000
+                </span>
+              </Typography>
+            </Grid>
+          </Grid>
+
+          <Grid
+            item
+            container
+            md={4}
+            style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
           >
-            Book Now
-          </Button>
-        </div>
-      </Paper>
-    </div>
+            <Grid>
+              {' '}
+              <FavoriteIcon style={{ color: 'White' }} />
+            </Grid>
+            <Grid>
+              {' '}
+              <Button
+                variant="outlined"
+                size="large"
+                label="Enquire"
+                color="primary"
+                className={clsx(classes.margin, classes.enquire)}
+              >
+                Enquire
+              </Button>
+            </Grid>
+            <Grid>
+              {' '}
+              <Button
+                variant="outlined"
+                size="large"
+                color="primary"
+                className={clsx(classes.margin, classes.Book)}
+              >
+                Book Now
+              </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Container>
+    </Container>
   );
 }

@@ -8,14 +8,14 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Logo from './Logo.png';
-import { Divider, TextareaAutosize } from '@material-ui/core';
+import { Divider } from '@material-ui/core';
 import { BorderStyle } from '@material-ui/icons';
 import SearchIcon from '@material-ui/icons/Search';
 import PhoneEnabledIcon from '@material-ui/icons/PhoneEnabled';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
 import { Offer } from '../Offer/Offer';
-import zIndex from '@material-ui/core/styles/zIndex';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
