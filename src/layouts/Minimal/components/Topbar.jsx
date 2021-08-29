@@ -1,126 +1,3 @@
-/* eslint-disable no-unused-expressions */
-// /* eslint-disable no-undef */
-// /* eslint-disable jsx-a11y/alt-text */
-// import React from 'react';
-// import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
-// import Button from '@material-ui/core/Button';
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
-// import Logo from '../../../assets/img/logo.svg';
-// import { Divider } from '@material-ui/core';
-// import { BorderStyle } from '@material-ui/icons';
-// import SearchIcon from '@material-ui/icons/Search';
-// import PhoneEnabledIcon from '@material-ui/icons/PhoneEnabled';
-// import EmailIcon from '@material-ui/icons/Email';
-// import PersonIcon from '@material-ui/icons/Person';
-
-// const useStyles = makeStyles((theme) =>
-//   createStyles({
-//     root: {},
-//     menuButton: {
-//       marginRight: theme.spacing(2)
-//     },
-//     title: {
-//       display: 'flex',
-//       flexGrow: 1,
-//       textAlign: 'center',
-//       justifyContent: 'center',
-// fontFamily: 'Lato',
-// fontStyle: 'normal',
-// fontWeight: 'normal',
-// fontSize: '14px',
-// lineHeight: '17px',
-// textTransform: 'uppercase',
-// width: '53px',
-// height: ' 17px',
-// color: ' #FFFFFF'
-//     },
-//     logo: {
-// maxWidth: ' 192px',
-// minHeight: '72px',
-// marginRight: theme.spacing(4)
-//     },
-//     Appbar: {
-// backgroundColor: '#091527',
-// height: '72px',
-// maxWidth: '100%'
-//     },
-//     icons: {
-//       display: 'flex',
-//       gap: '1rem',
-//       alignItems: 'center',
-//       marginRight: '5rem'
-//     },
-//     contacts: {
-//       display: 'flex',
-//       gap: '0.5rem',
-//       alignItems: 'center',
-//       justifyContent: 'center'
-//     }
-//   })
-// );
-
-// const Topbar = () => {
-//   const classes = useStyles();
-
-//   return (
-//     <div className={classes.root}>
-//       <AppBar position="static" className={classes.Appbar}>
-//         <Toolbar style={{ flexGrow: 1 }}>
-//           <IconButton
-//             edge="start"
-//             className={classes.menuButton}
-//             color="inherit"
-//             aria-label="menu"
-//           >
-//             <img src={Logo} className={classes.logo} />
-//           </IconButton>
-//           <Typography variant="h6" className={classes.title}>
-//             Yatchs
-//           </Typography>
-//           <Typography variant="h6" className={classes.title}>
-//             offers
-//           </Typography>{' '}
-//           <Typography variant="h6" className={classes.title}>
-//             destinations
-//           </Typography>{' '}
-//           <Typography variant="h6" className={classes.title}>
-//             bespoke experiences
-//           </Typography>{' '}
-//           <Typography variant="h6" className={classes.title}>
-//             news & blogs
-//           </Typography>
-//           <Typography variant="h6" className={classes.title}>
-//             More
-//           </Typography>
-//           <div className={classes.icons}>
-//             <SearchIcon />
-//             <PhoneEnabledIcon />
-//             <EmailIcon />
-//             <Divider
-//               orientation="vertical"
-//               flexItem
-//               style={{ backgroundColor: 'rgba(255, 255, 255, 0.23)' }}
-//             />
-//             <div className={classes.contacts}>
-//               <PersonIcon />
-// <Typography variant="h6" className={classes.title}>
-//   Members
-// </Typography>
-//             </div>
-//             <br />
-//           </div>
-//         </Toolbar>
-//       </AppBar>
-//       {/* <Offer /> */}
-//     </div>
-//   );
-// };
-// export default Topbar;
-// import Logo from '../../../assets/img/logo.svg';
 import logo from '../../../assets/img/logo.svg';
 import React, { useState, useEffect } from 'react';
 import AppBar from '@material-ui/core/AppBar';
@@ -133,7 +10,9 @@ import {
   Button,
   Container,
   Divider,
-  Typography
+  Typography,
+  Paper,
+  MenuItem
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import IconButton from '@material-ui/core/IconButton';
@@ -152,6 +31,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
+import Popper from '@material-ui/core/Popper';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import MenuList from '@material-ui/core/MenuList';
 
 const drawerWidth = 400;
 const useStyles = makeStyles((theme) => ({
@@ -181,6 +63,11 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     color: ' #FFFFFF',
     minWidth: '50px'
+  },
+  Menu: {
+    backgroundColor: '#1b4077',
+
+    color: '#FFFFFF'
   },
   logoContainer: {
     padding: 0
@@ -232,6 +119,29 @@ export default function Header(props) {
     setMobileOpen(false);
     setOpen(false);
   };
+
+  //////////////////////////////////////////////////////////Menus
+  const [tabopen, setTabopen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleToggle = () => {
+    setTabopen((prevOpen) => !prevOpen);
+  };
+
+  const handleCloseTab = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setTabopen(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setTabopen(false);
+    }
+  }
   useEffect(() => {
     if (window.location.pathname === '/' && value !== 0) {
       setValue(0);
@@ -319,11 +229,56 @@ export default function Header(props) {
                 to="/NEWSBLOGS"
               />
               <Tab
-                lassName={classes.tab}
+                className={classes.tab}
                 label="MORE"
                 component={Link}
                 to="/MORE"
-              />
+                ref={anchorRef}
+                aria-controls={tabopen ? 'menu-list-grow' : undefined}
+                onClick={handleToggle}
+              />{' '}
+              <Popper
+                open={tabopen}
+                anchorEl={anchorRef.current}
+                role={undefined}
+              >
+                <Paper style={{ marginTop: '0.5rem' }}>
+                  <ClickAwayListener onClickAway={handleCloseTab}>
+                    <MenuList
+                      autoFocusItem={tabopen}
+                      className={clsx(classes.tab, classes.Menu)}
+                      id="menu-list-grow"
+                      onKeyDown={handleListKeyDown}
+                    >
+                      <MenuItem
+                        onMouseEnter={(e) =>
+                          (e.target.style.backgroundColor = '#cadaf3')
+                        }
+                        onMouseLeave={(e) =>
+                          (e.target.style.backgroundColor = '')
+                        }
+                        className={clsx(classes.tab, classes.Menu)}
+                        onClick={handleCloseTab}
+                      >
+                        ABOUT YOU
+                      </MenuItem>
+                      <MenuItem
+                        o
+                        onMouseEnter={(e) =>
+                          (e.target.style.backgroundColor = '#cadaf3')
+                        }
+                        onMouseLeave={(e) =>
+                          (e.target.style.backgroundColor = '')
+                        }
+                        className={clsx(classes.tab, classes.Menu)}
+                        onClick={handleCloseTab}
+                      >
+                        DINNING
+                      </MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Popper>
             </Tabs>
           </Hidden>
           <Hidden xsDown>
@@ -457,200 +412,3 @@ export default function Header(props) {
     </>
   );
 }
-// import React, { useState } from 'react';
-// 92px 0 92px 20px
-// import { makeStyles } from '@material-ui/core/styles';
-// import AppBar from '@material-ui/core/AppBar';
-// import Toolbar from '@material-ui/core/Toolbar';
-// import Paper from '@material-ui/core/Paper';
-// import InputBase from '@material-ui/core/InputBase';
-// import Button from '@material-ui/core/Button';
-// import IconButton from '@material-ui/core/IconButton';
-// import SearchIcon from '@material-ui/icons/Search';
-// import CloseIcon from '@material-ui/icons/Close';
-
-// import Logo from '../../../assets/img/logo.svg';
-// import { Hidden } from '@material-ui/core';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     padding: '2%',
-//     background: 'white'
-//   },
-//   logo: {
-//     [theme.breakpoints.down('sm')]: {
-//       width: '60%'
-//     }
-//   },
-//   flexGrow: {
-//     flexGrow: 1
-//   },
-//   title: {
-//     fontFamily: 'Duke Charming DEMO',
-//     fontStyle: 'normal',
-//     fontWeight: 'normal',
-//     fontSize: '49.4624px',
-//     lineHeight: '49px',
-//     color: '#000000'
-//   },
-//   search: {
-//     position: 'relative',
-//     boxShadow: '0px 4px 24px rgba(84, 95, 219, 0.25)',
-//     borderRadius: '17px',
-//     marginLeft: '8px',
-//     width: '100%',
-//     height: '60.61px',
-//     [theme.breakpoints.up('sm')]: {
-//       width: '350px'
-//     },
-//     [theme.breakpoints.up('md')]: {
-//       width: '390px'
-//     },
-//     [theme.breakpoints.up('lg')]: {
-//       width: '530px'
-//     }
-//   },
-//   searchIcon: {
-//     padding: theme.spacing(0, 2),
-//     height: '100%',
-//     position: 'absolute',
-//     pointerEvents: 'none',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   },
-//   inputRoot: {
-//     color: 'inherit'
-//   },
-//   inputInput: {
-//     padding: theme.spacing(1, 1, 1, 0),
-//     // vertical padding + font size from searchIcon
-//     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-//     transition: theme.transitions.create('width'),
-//     fontSize: '16px'
-//   },
-//   searchButton: {
-//     width: '140px',
-//     height: '60.61px',
-//     borderRadius: '17px',
-//     background: '#545FDB',
-//     color: 'white',
-//     '&:hover': {
-//       background: '#545FDB'
-//     }
-//   },
-//   label: {
-//     fontFamily: 'Ubuntu',
-//     fontStyle: 'normal',
-//     fontWeight: 500,
-//     fontSize: '16.3822px',
-//     lineHeight: '21px',
-//     color: '#FFFFFF',
-//     textTransform: 'none'
-//   },
-//   mobileIcon: {
-//     height: 35,
-//     width: 35
-//   },
-//   mobileRoot: {
-//     display: 'flex',
-//     alignItems: 'center',
-//     height: '56px',
-//     width: '100%',
-//     [theme.breakpoints.up('sm')]: {
-//       height: '64px'
-//     }
-//   },
-//   mobileInput: {
-//     padding: theme.spacing(1, 1, 1, 0),
-//     // vertical padding + font size from searchIcon
-//     paddingLeft: theme.spacing(2),
-//     transition: theme.transitions.create('width'),
-//     width: '100%',
-//     fontSize: '16px'
-//   }
-// }));
-
-// const Topbar = (props) => {
-//   const classes = useStyles();
-//   const [open, setOpen] = useState(false);
-
-//   const toggle = () => {
-//     setOpen(!open);
-//   };
-
-//   return (
-//     <AppBar
-//       className={classes.root}
-//       color="transparent"
-//       position="static"
-//       elevation={0}
-//     >
-//       <Toolbar>
-//         {!open && (
-//           <>
-//             <img className={classes.logo} alt="Logo" src={Logo} />
-//             <div className={classes.flexGrow} />
-//           </>
-//         )}
-
-//         <Hidden smDown>
-//           <Paper component="form" className={classes.search}>
-//             <div className={classes.searchIcon}>
-//               <SearchIcon style={{ color: 'rgba(0, 0, 0, 0.5)' }} />
-//             </div>
-//             <InputBase
-//               fullWidth
-//               placeholder="Search…"
-//               classes={{
-//                 root: classes.inputRoot,
-//                 input: classes.inputInput
-//               }}
-//               inputProps={{ 'aria-label': 'search' }}
-//               endAdornment={
-//                 <Button
-//                   size="large"
-//                   classes={{
-//                     root: classes.searchButton,
-//                     label: classes.label
-//                   }}
-//                   type="submit"
-//                 >
-//                   Search
-//                 </Button>
-//               }
-//             />
-//           </Paper>
-//         </Hidden>
-//         <Hidden mdUp>
-//           {!open && (
-//             <IconButton onClick={toggle}>
-//               <SearchIcon className={classes.mobileIcon} />
-//             </IconButton>
-//           )}
-
-//           {open && (
-//             <Paper component="form" className={classes.mobileRoot}>
-//               <InputBase
-//                 fullWidth
-//                 placeholder="Search…"
-//                 classes={{
-//                   root: classes.inputRoot,
-//                   input: classes.mobileInput
-//                 }}
-//                 inputProps={{ 'aria-label': 'search' }}
-//                 endAdornment={
-//                   <IconButton onClick={toggle}>
-//                     <CloseIcon />
-//                   </IconButton>
-//                 }
-//               />
-//             </Paper>
-//           )}
-//         </Hidden>
-//       </Toolbar>
-//     </AppBar>
-//   );
-// };
-
-// export default Topbar;
