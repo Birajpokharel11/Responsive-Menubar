@@ -362,21 +362,23 @@ export default function Header(props) {
               }}
             />
           </Hidden>
-          <IconButton
-            color="inherit"
-            edge="end"
-            onClick={handleDrawerOpen}
-            className={clsx(mobileOpen && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <IconButton
-            onClick={handleDrawerClose}
-            color="inherit"
-            className={clsx(!mobileOpen && classes.hide)}
-          >
-            <CloseIcon />
-          </IconButton>
+          <Hidden lgUp>
+            <IconButton
+              color="inherit"
+              edge="end"
+              onClick={handleDrawerOpen}
+              className={clsx(mobileOpen && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <IconButton
+              onClick={handleDrawerClose}
+              color="inherit"
+              className={clsx(!mobileOpen && classes.hide)}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Hidden>
         </Toolbar>
       </AppBar>
       <div className={classes.toolbarMargin} />
