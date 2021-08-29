@@ -161,7 +161,10 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     maxWidth: ' 210px',
-    minHeight: '35.84px'
+    minHeight: '35.84px',
+    [theme.breakpoints.down('340')]: {
+      width: '180px'
+    }
   },
   AppBar: {
     backgroundColor: '#091527',
@@ -232,7 +235,7 @@ export default function Header(props) {
   useEffect(() => {
     if (window.location.pathname === '/' && value !== 0) {
       setValue(0);
-    } else if (window.location.pathname === '/YATCHS' && value !== 0) {
+    } else if (window.location.pathname === '/YATCHS' && value !== 1) {
       setValue(1);
     } else if (window.location.pathname === '/OFFERS' && value !== 2) {
       setValue(2);
@@ -257,126 +260,124 @@ export default function Header(props) {
         elevation={0}
         className={classes.AppBar}
       >
-        <Container maxWidth="xl">
-          <Toolbar className={classes.toolbar}>
-            <Button
-              component={Link}
-              to="/"
-              className={classes.logoContainer}
-              onClick={() => setValue(0)}
+        <Toolbar className={classes.toolbar}>
+          <Button
+            component={Link}
+            to="/"
+            className={classes.logoContainer}
+            onClick={() => setValue(0)}
+          >
+            <img
+              alt="company logo"
+              className={classes.logo}
+              src={logo}
+              width="330"
+            />
+          </Button>
+          <div style={{ flexGrow: 1 }} />
+          <Hidden mdDown>
+            <Tabs
+              value={value}
+              className={classes.tabContainer}
+              onChange={handelChange}
+              indicatorColor="none"
             >
-              <img
-                alt="company logo"
-                className={classes.logo}
-                src={logo}
-                width="330"
+              <Tab
+                label="sad"
+                component={Link}
+                to="/YATCHS"
+                style={{ display: 'none', padding: '0', margin: '0' }}
               />
-            </Button>
-            <div style={{ flexGrow: 1 }} />
-            <Hidden mdDown>
-              <Tabs
-                value={value}
-                className={classes.tabContainer}
-                onChange={handelChange}
-                indicatorColor="none"
-              >
-                <Tab
-                  label=""
-                  component={Link}
-                  to="/"
-                  style={{ display: 'none', padding: '0', margin: '0' }}
-                />
-                <Tab
-                  className={classes.tab}
-                  label="YATCHS"
-                  component={Link}
-                  to="/YATCHS"
-                />
-                <Tab
-                  className={classes.tab}
-                  label="OFFERS"
-                  component={Link}
-                  to="/OFFERS"
-                />
-                <Tab
-                  className={classes.tab}
-                  label="DESTINATIONS"
-                  component={Link}
-                  to="/DESTINATIONS"
-                />
-                <Tab
-                  className={classes.tab}
-                  label="BESPOKE EXPERIENCES"
-                  component={Link}
-                  to="/BESPOKEEXPERIENCES"
-                />
-                <Tab
-                  className={classes.tab}
-                  label="NEWS $ BLOGS"
-                  component={Link}
-                  to="/NEWSBLOGS"
-                />
-                <Tab
-                  lassName={classes.tab}
-                  label="MORE"
-                  component={Link}
-                  to="/MORE"
-                />
-              </Tabs>
-            </Hidden>
-            <Hidden xsDown>
-              <IconButton color="inherit">
-                <SearchIcon />
-              </IconButton>
-              <IconButton color="inherit">
-                <PhoneEnabledIcon />
-              </IconButton>{' '}
-            </Hidden>
+              <Tab
+                className={classes.tab}
+                label="YATCHS"
+                component={Link}
+                to="/YATCHS"
+              />
+              <Tab
+                className={classes.tab}
+                label="OFFERS"
+                component={Link}
+                to="/OFFERS"
+              />
+              <Tab
+                className={classes.tab}
+                label="DESTINATIONS"
+                component={Link}
+                to="/DESTINATIONS"
+              />
+              <Tab
+                className={classes.tab}
+                label="BESPOKE EXPERIENCES"
+                component={Link}
+                to="/BESPOKEEXPERIENCES"
+              />
+              <Tab
+                className={classes.tab}
+                label="NEWS $ BLOGS"
+                component={Link}
+                to="/NEWSBLOGS"
+              />
+              <Tab
+                lassName={classes.tab}
+                label="MORE"
+                component={Link}
+                to="/MORE"
+              />
+            </Tabs>
+          </Hidden>
+          <Hidden xsDown>
             <IconButton color="inherit">
-              <EmailIcon />
+              <SearchIcon />
+            </IconButton>
+            <IconButton color="inherit">
+              <PhoneEnabledIcon />
             </IconButton>{' '}
-            <Hidden smDown>
-              <Divider
-                orientation="vertical"
-                flexItem
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255,  0.23)',
-                  marginTop: '4px'
-                }}
-              />
-              <IconButton color="inherit">
-                <PersonIcon />
-              </IconButton>{' '}
-              <Typography className={classes.tab}>Members</Typography>
-            </Hidden>
-            <Hidden xsDown>
-              <Divider
-                orientation="vertical"
-                flexItem
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255,  0.23)',
-                  marginTop: '4px',
-                  marginLeft: '8px'
-                }}
-              />
-            </Hidden>
-            <IconButton
-              color="inherit"
-              edge="end"
-              onClick={handleDrawerOpen}
-              className={clsx(mobileOpen && classes.hide)}
-            >
-              <MenuIcon />
-            </IconButton>
-            <IconButton
-              onClick={handleDrawerClose}
-              color="inherit"
-              className={clsx(!mobileOpen && classes.hide)}
-            >
-              <CloseIcon />
-            </IconButton>
-          </Toolbar>
-        </Container>
+          </Hidden>
+          <IconButton color="inherit">
+            <EmailIcon />
+          </IconButton>{' '}
+          <Hidden smDown>
+            <Divider
+              orientation="vertical"
+              flexItem
+              style={{
+                backgroundColor: 'rgba(255, 255, 255,  0.23)',
+                marginTop: '4px'
+              }}
+            />
+            <IconButton color="inherit">
+              <PersonIcon />
+            </IconButton>{' '}
+            <Typography className={classes.tab}>Members</Typography>
+          </Hidden>
+          <Hidden xsDown>
+            <Divider
+              orientation="vertical"
+              flexItem
+              style={{
+                backgroundColor: 'rgba(255, 255, 255,  0.23)',
+                marginTop: '4px',
+                marginLeft: '8px'
+              }}
+            />
+          </Hidden>
+          <IconButton
+            color="inherit"
+            edge="end"
+            onClick={handleDrawerOpen}
+            className={clsx(mobileOpen && classes.hide)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <IconButton
+            onClick={handleDrawerClose}
+            color="inherit"
+            className={clsx(!mobileOpen && classes.hide)}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Toolbar>
       </AppBar>
       <div className={classes.toolbarMargin} />
       <Drawer
