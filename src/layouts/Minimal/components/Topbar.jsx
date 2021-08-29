@@ -144,28 +144,31 @@ import PhoneEnabledIcon from '@material-ui/icons/PhoneEnabled';
 import EmailIcon from '@material-ui/icons/Email';
 import PersonIcon from '@material-ui/icons/Person';
 import { Hidden } from '@material-ui/core';
-import ReorderIcon from '@material-ui/icons/Reorder';
+import MenuIcon from '@material-ui/icons/Menu';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Drawer from '@material-ui/core/Drawer';
+import CloseIcon from '@material-ui/icons/Close';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import List from '@material-ui/core/List';
 
-function ElevationScroll(props) {
-  const { children } = props;
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 100
-  });
-
-  return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0
-  });
-}
+const drawerWidth = 400;
 const useStyles = makeStyles((theme) => ({
   toolbarMargin: {
-    ...theme.mixins.toolbar
+    ...theme.mixins.toolbar,
+    marginTop: '8px'
   },
   logo: {
     maxWidth: ' 210px',
     minHeight: '35.84px'
   },
-  AppBar: { backgroundColor: '#091527', height: '72px', maxWidth: '100%' },
+  AppBar: {
+    backgroundColor: '#091527',
+    height: '72px',
+    maxWidth: '100%',
+    zIndex: theme.zIndex.modal + 1
+  },
   tab: {
     fontFamily: 'Lato',
     fontStyle: 'normal',
@@ -183,6 +186,25 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('lg')]: {
       padding: '0px,0px,0px,32px'
     }
+  },
+  drawer: {
+    backgroundColor: '#091527'
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    backgroundColor: '#071529D9',
+    [theme.breakpoints.down('755')]: {
+      width: '80%'
+    },
+    [theme.breakpoints.down('700')]: {
+      width: '100%'
+    }
+  },
+  listStyle: {
+    marginTop: '24px'
+  },
+  hide: {
+    display: 'none'
   }
 }));
 
@@ -190,18 +212,22 @@ export default function Header(props) {
   const classes = useStyles();
 
   const [value, setValue] = useState(0);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [open, setOpen] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const handelChange = (e, value) => {
     setValue(value);
   };
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+
+  const handleDrawerOpen = () => {
+    setMobileOpen(true);
     setOpen(true);
   };
 
+  const handleDrawerClose = () => {
+    setMobileOpen(false);
+    setOpen(false);
+  };
   useEffect(() => {
     if (window.location.pathname === '/' && value !== 0) {
       setValue(0);
@@ -245,7 +271,7 @@ export default function Header(props) {
                 width="330"
               />
             </Button>
-            <Hidden lgUp>
+            <Hidden xlUp>
               <div style={{ flexGrow: 1 }} />
             </Hidden>
             <Hidden mdDown>
@@ -258,7 +284,7 @@ export default function Header(props) {
                 <Tab
                   label=""
                   component={Link}
-                  to="/YATCHS"
+                  to="/"
                   style={{ display: 'none', padding: '0', margin: '0' }}
                 />
                 <Tab
@@ -336,19 +362,72 @@ export default function Header(props) {
                   }}
                 />
               </Hidden>
-              <IconButton color="inherit">
-                <ReorderIcon />
-              </IconButton>{' '}
+              <IconButton
+                color="inherit"
+                edge="end"
+                onClick={handleDrawerOpen}
+                className={clsx(mobileOpen && classes.hide)}
+              >
+                <MenuIcon />
+              </IconButton>
+              <IconButton
+                onClick={handleDrawerClose}
+                color="inherit"
+                className={clsx(!mobileOpen && classes.hide)}
+              >
+                <CloseIcon />
+              </IconButton>
             </Hidden>
           </Toolbar>
         </Container>
       </AppBar>
       <div className={classes.toolbarMargin} />
+      <Drawer
+        className={classes.drawer}
+        variant="persistent"
+        anchor="right"
+        open={open}
+        classes={{
+          paper: classes.drawerPaper
+        }}
+      >
+        <div style={{ padding: '92px 0 92px 20px' }}>
+          <IconButton onClick={handleDrawerClose}>
+            <CloseIcon />
+          </IconButton>
+          <List className={classes.tab}>
+            <ListItem className={classes.listStyle}>
+              <ListItemText primary="YATCHS" />
+            </ListItem>
+            <Divider variant="middle" style={{ backgroundColor: 'white' }} />
+            <ListItem className={classes.listStyle}>
+              <ListItemText primary="OFFERS" />
+            </ListItem>{' '}
+            <Divider variant="middle" style={{ backgroundColor: 'white' }} />
+            <ListItem className={classes.listStyle}>
+              <ListItemText primary="DESTINATIONS" />
+            </ListItem>{' '}
+            <Divider variant="middle" style={{ backgroundColor: 'white' }} />
+            <ListItem className={classes.listStyle}>
+              <ListItemText primary="BESPOKE EXPERIENCES" />
+            </ListItem>{' '}
+            <Divider variant="middle" style={{ backgroundColor: 'white' }} />
+            <ListItem className={classes.listStyle}>
+              <ListItemText primary="NEWS & BLOGS" />
+            </ListItem>{' '}
+            <Divider variant="middle" style={{ backgroundColor: 'white' }} />
+            <ListItem className={classes.listStyle}>
+              <ListItemText primary="MORE" />
+            </ListItem>{' '}
+            <Divider variant="middle" style={{ backgroundColor: 'white' }} />
+          </List>
+        </div>
+      </Drawer>
     </>
   );
 }
 // import React, { useState } from 'react';
-
+// 92px 0 92px 20px
 // import { makeStyles } from '@material-ui/core/styles';
 // import AppBar from '@material-ui/core/AppBar';
 // import Toolbar from '@material-ui/core/Toolbar';
