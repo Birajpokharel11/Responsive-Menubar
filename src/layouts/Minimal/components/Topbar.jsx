@@ -160,6 +160,10 @@ export default function Header(props) {
       setValue(5);
     } else if (window.location.pathname === '/MORE' && value !== 6) {
       setValue(6);
+    } else if (window.location.pathname === '/ABOUTYOU' && value !== 6) {
+      setValue(6);
+    } else if (window.location.pathname === '/DINNING' && value !== 6) {
+      setValue(6);
     }
   }, [value]);
   return (
@@ -259,11 +263,12 @@ export default function Header(props) {
                         }
                         className={clsx(classes.tab, classes.Menu)}
                         onClick={handleCloseTab}
+                        to="ABOUTYOU"
+                        component={Link}
                       >
                         ABOUT YOU
                       </MenuItem>
                       <MenuItem
-                        o
                         onMouseEnter={(e) =>
                           (e.target.style.backgroundColor = '#cadaf3')
                         }
@@ -272,6 +277,8 @@ export default function Header(props) {
                         }
                         className={clsx(classes.tab, classes.Menu)}
                         onClick={handleCloseTab}
+                        to="/DINNING"
+                        component={Link}
                       >
                         DINNING
                       </MenuItem>

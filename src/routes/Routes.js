@@ -58,7 +58,7 @@ const Routes = () => {
       <RouteWithLayout
         exact
         layout={MinimalLayout}
-        path="/DINING"
+        path="/DINNING"
         component={() => <div>DINING</div>}
       />
       <Redirect to="/not-found" />
