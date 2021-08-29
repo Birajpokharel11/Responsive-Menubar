@@ -193,7 +193,8 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
     backgroundColor: '#071529D9',
-    [theme.breakpoints.down('755')]: {
+    paddingRight: '2%',
+    [theme.breakpoints.down('785')]: {
       width: '80%'
     },
     [theme.breakpoints.down('700')]: {
@@ -271,9 +272,7 @@ export default function Header(props) {
                 width="330"
               />
             </Button>
-            <Hidden xlUp>
-              <div style={{ flexGrow: 1 }} />
-            </Hidden>
+            <div style={{ flexGrow: 1 }} />
             <Hidden mdDown>
               <Tabs
                 value={value}
@@ -350,34 +349,32 @@ export default function Header(props) {
               </IconButton>{' '}
               <Typography className={classes.tab}>Members</Typography>
             </Hidden>
-            <Hidden lgUp>
-              <Hidden xsDown>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  style={{
-                    backgroundColor: 'rgba(255, 255, 255,  0.23)',
-                    marginTop: '4px',
-                    marginLeft: '8px'
-                  }}
-                />
-              </Hidden>
-              <IconButton
-                color="inherit"
-                edge="end"
-                onClick={handleDrawerOpen}
-                className={clsx(mobileOpen && classes.hide)}
-              >
-                <MenuIcon />
-              </IconButton>
-              <IconButton
-                onClick={handleDrawerClose}
-                color="inherit"
-                className={clsx(!mobileOpen && classes.hide)}
-              >
-                <CloseIcon />
-              </IconButton>
+            <Hidden xsDown>
+              <Divider
+                orientation="vertical"
+                flexItem
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255,  0.23)',
+                  marginTop: '4px',
+                  marginLeft: '8px'
+                }}
+              />
             </Hidden>
+            <IconButton
+              color="inherit"
+              edge="end"
+              onClick={handleDrawerOpen}
+              className={clsx(mobileOpen && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+            <IconButton
+              onClick={handleDrawerClose}
+              color="inherit"
+              className={clsx(!mobileOpen && classes.hide)}
+            >
+              <CloseIcon />
+            </IconButton>
           </Toolbar>
         </Container>
       </AppBar>
@@ -391,10 +388,41 @@ export default function Header(props) {
           paper: classes.drawerPaper
         }}
       >
-        <div style={{ padding: '92px 0 92px 20px' }}>
-          <IconButton onClick={handleDrawerClose}>
-            <CloseIcon />
-          </IconButton>
+        <div style={{ padding: '162px 0 92px 20px', color: 'white' }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              paddingRight: '2%'
+            }}
+          >
+            {' '}
+            <Hidden smUp>
+              <div>
+                <IconButton color="inherit">
+                  <SearchIcon />
+                </IconButton>
+                <IconButton color="inherit">
+                  <PhoneEnabledIcon />
+                </IconButton>{' '}
+              </div>
+            </Hidden>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Divider
+                orientation="vertical"
+                flexItem
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255,  0.23)',
+                  marginTop: '4px'
+                }}
+              />
+              <IconButton color="inherit">
+                <PersonIcon />
+              </IconButton>{' '}
+              <Typography className={classes.tab}>Members</Typography>
+            </div>
+          </div>
+
           <List className={classes.tab}>
             <ListItem className={classes.listStyle}>
               <ListItemText primary="YATCHS" />
