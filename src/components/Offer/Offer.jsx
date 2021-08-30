@@ -2,7 +2,7 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { Button, Container, Grid, Typography } from '@material-ui/core';
-import HeroYatch from './HeroYatch.png';
+import HeroYatch from './HeroYatch.svg';
 import Checkin from './checkin/Checkin';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import clsx from 'clsx';
@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) =>
     },
     Yatch: {
       width: ' 100%',
-      height: ' 671px'
+      height: ' 671px',
+      objectFit: 'cover'
     },
 
     CheckIn: {
@@ -104,7 +105,6 @@ export function Offer() {
               item
               style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}
             >
-              <Checkin />
               <Checkin />
             </Grid>
             <Grid item>
