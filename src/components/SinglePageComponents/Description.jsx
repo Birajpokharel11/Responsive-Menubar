@@ -28,16 +28,29 @@ const useStyles = makeStyles((theme) =>
       fontWeight: '300',
       fontSize: '18px',
       lineHeight: '22px',
-      maxwidth: '505px',
+      minwidth: '505px',
       color: '#2A398D',
-      paddingTop: '20px'
+      paddingTop: '20px',
+      [theme.breakpoints.down('560')]: {
+        width: '343px'
+      },
+      [theme.breakpoints.down('385')]: {
+        width: '300px',
+        fontSize: '16px'
+      },
+      [theme.breakpoints.up('1400')]: {
+        width: '505px'
+      }
     },
-    typography1: {
+    Typography1: {
       fontFamily: 'Lato',
       fontStyle: 'normal',
       fontWeight: '300',
       fontSize: '32px',
-      color: '#2A398D'
+      color: '#2A398D',
+      [theme.breakpoints.down('430')]: {
+        fontSize: '24px'
+      }
     },
     Typography2: {
       fontFamily: 'Lato',
@@ -47,22 +60,70 @@ const useStyles = makeStyles((theme) =>
       paddingTop: '64px',
       color: '#2A398D'
     },
+
+    Box: { padding: '0%', paddingTop: '65px', display: 'flex' },
+
     Images: {
       flex: '50%',
       display: 'flex',
       justifyContent: 'flex-end',
       maxwidth: '1268.61px',
       objectFit: 'cover',
-      [theme.breakpoints.down('1084')]: {}
+      [theme.breakpoints.down('1444')]: {
+        width: '500px',
+        height: '750px'
+      },
+      [theme.breakpoints.down('1221')]: {
+        width: '400px',
+        height: '650px'
+      },
+      [theme.breakpoints.down('900')]: {
+        display: 'none'
+      }
     },
     TextPosition: {
-      padding: '0%',
       paddingLeft: '100px',
-      height: '220px',
-      width: '505px',
-      flex: '40%'
+      paddingRight: '100px',
+      [theme.breakpoints.down('1110')]: {
+        paddingRight: '10px'
+      },
+      width: '100%',
+      flex: '50%',
+      [theme.breakpoints.down('900')]: {
+        paddingRight: '5%',
+        paddingLeft: '5%'
+      },
+      [theme.breakpoints.down('560')]: {
+        paddingRight: '6%',
+        paddingLeft: '6%'
+      },
+      [theme.breakpoints.down('385')]: {
+        paddingRight: '3%',
+        paddingLeft: '3%'
+      }
     },
-    Box: { padding: '0%', paddingTop: '65px', display: 'flex' }
+    mobileImage: {
+      display: 'none',
+      [theme.breakpoints.down('900')]: {
+        display: 'block',
+        objectFit: 'cover',
+        width: '100%',
+        paddingTop: '32px',
+        [theme.breakpoints.down('560')]: {
+          width: '343px'
+        },
+        [theme.breakpoints.down('385')]: {
+          width: '300px'
+        }
+      }
+    },
+    Grid: {
+      width: '505px',
+      [theme.breakpoints.down('560')]: {
+        paddingLeft: '10%',
+        width: '113px'
+      }
+    }
   })
 );
 
@@ -70,39 +131,32 @@ export function Description() {
   const itemData = [
     {
       img: Game,
-      title: 'Game Consols',
-      author: 'author'
+      title: 'Game Consols'
     },
 
     {
       img: Wifi,
-      title: 'Free Wi Fi',
-      author: 'author'
+      title: 'Free Wi Fi'
     },
     {
       img: Satellite,
-      title: 'Satellite TV',
-      author: 'author'
+      title: 'Satellite TV'
     },
     {
       img: Air,
-      title: 'Air Conditioning',
-      author: 'author'
+      title: 'Air Conditioning'
     },
     {
       img: Deck,
-      title: 'Deck Jacuzzi',
-      author: 'author'
+      title: 'Deck Jacuzzi'
     },
     {
       img: Ipod,
-      title: 'Ipod Docking',
-      author: 'author'
+      title: 'Ipod Docking'
     },
     {
       img: Sauna,
-      title: 'Sauna',
-      author: 'author'
+      title: 'Sauna'
     }
   ];
   const classes = useStyles();
@@ -116,7 +170,7 @@ export function Description() {
       >
         Home>Yatchs>Atteries
       </Typography>
-      <Box className={classes.Box}>
+      <Box maxWidth="false" className={classes.Box}>
         <div className={classes.TextPosition}>
           <Typography className={classes.Typography1}>
             ABOUT ATESTEAS
@@ -132,6 +186,9 @@ export function Description() {
             experts in all that the Greek islands have to offer and will help
             create an unforgettable custom itinerary for her lucky guests.
           </Typography>
+          <div>
+            <img src={Aresteas} className={classes.mobileImage} />
+          </div>
           <Typography className={classes.Typography2}>
             AMENITIES & ENTERTAINMENT
           </Typography>
@@ -143,11 +200,13 @@ export function Description() {
             Luxury Charter yacht Corsario is a gulet yacht, read our online
             guide for more information on gulet Yacht Charter.
           </Typography>
-          <Grid container style={{ width: '505px' }}>
+          <Grid container className={classes.Grid}>
             {itemData.map((item) => (
               <Grid
                 item
-                xs={6}
+                xs={12}
+                sm={6}
+                md={6}
                 style={{
                   display: 'flex'
                 }}
