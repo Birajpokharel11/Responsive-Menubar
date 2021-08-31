@@ -1,5 +1,5 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
@@ -14,14 +14,6 @@ import { Divider } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    ButtonGroup: {
-      height: '52px',
-      width: '500px',
-      border: ' 1px solid rgba(255, 255, 255, 0.5)',
-      boxSizing: 'borderBox',
-      borderRadius: '4px',
-      borderRadius: '4px'
-    },
     Typography: {
       display: 'flex',
       alignItems: 'center',
@@ -29,13 +21,33 @@ const useStyles = makeStyles((theme) =>
       fontStyle: 'normal',
       fontWeight: '300',
       fontSize: '18px',
-      letterSpacing: '0em',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      width: '100%',
+      [theme.breakpoints.down('530')]: {
+        fontSize: '14px'
+      },
+      [theme.breakpoints.down('380')]: {
+        fontSize: '10px'
+      },
+      [theme.breakpoints.down('325')]: {
+        fontSize: '10px'
+      }
     },
     ArrowIcon: {
       color: 'white',
       width: ' 38px',
-      height: '34px'
+      height: '34px',
+      [theme.breakpoints.down('325')]: {
+        width: ' 20px',
+        height: '30px'
+      }
+    },
+    ButtonGroup: {},
+    FlexGrow: {
+      flexGrow: 1,
+      [theme.breakpoints.down('564')]: {
+        display: 'none'
+      }
     }
   })
 );
@@ -70,65 +82,28 @@ export default function Checkin() {
 
   return (
     <>
-      <div className={classes.ButtonGroup}>
-        <Grid container justifyContent="center" alignItems="center">
-          <Grid item>
-            <ButtonGroup variant="" ref={anchorRef}>
-              <Button
-                onClick={handleClick}
-                style={{ color: 'white' }}
-                className={classes.Typography}
-              >
-                {options[selectedIndex]}
-              </Button>{' '}
-              <div style={{ flexGrow: 1 }} />
-              <Button
-                color="primary"
-                size="small"
-                aria-controls={open ? 'split-button-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                aria-label="select merge strategy"
-                aria-haspopup="menu"
-                onClick={handleToggle}
-              >
-                <KeyboardArrowDownIcon className={classes.ArrowIcon} />
-              </Button>
-            </ButtonGroup>
-          </Grid>
-          <Divider
-            orientation="vertical"
-            flexItem
-            variant="middle"
-            style={{
-              backgroundColor: 'white',
-              marginTop: '5px'
-            }}
-          />
-          <Grid item>
-            <ButtonGroup variant="transtarent" ref={anchorRef}>
-              <Button
-                className={classes.Typography}
-                style={{ color: 'white' }}
-                onClick={handleClick}
-              >
-                {options[selectedIndex]}
-              </Button>
-              <div style={{ flexGrow: 1 }} />
-              <Button
-                color="primary"
-                size="small"
-                aria-controls={open ? 'split-button-menu' : undefined}
-                aria-expanded={open ? 'true' : undefined}
-                aria-label="select merge strategy"
-                aria-haspopup="menu"
-                onClick={handleToggle}
-              >
-                <KeyboardArrowDownIcon className={classes.ArrowIcon} />
-              </Button>
-            </ButtonGroup>
-          </Grid>
-        </Grid>
-      </div>
+      <ButtonGroup variant="" ref={anchorRef} className={classes.ButtonGroup}>
+        <Button
+          onClick={handleClick}
+          style={{ color: 'white' }}
+          className={classes.Typography}
+        >
+          {options[selectedIndex]}
+        </Button>{' '}
+        <div className={classes.FlexGrow} />
+        <Button
+          color="primary"
+          size="small"
+          aria-controls={open ? 'split-button-menu' : undefined}
+          aria-expanded={open ? 'true' : undefined}
+          aria-label="select merge strategy"
+          aria-haspopup="menu"
+          onClick={handleToggle}
+          className={classes.ButtonGroup}
+        >
+          <KeyboardArrowDownIcon className={classes.ArrowIcon} />
+        </Button>
+      </ButtonGroup>
 
       <Popper
         open={open}

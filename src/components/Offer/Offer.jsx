@@ -6,6 +6,8 @@ import HeroYatch from './HeroYatch.svg';
 import Checkin from './checkin/Checkin';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import clsx from 'clsx';
+import Main from './checkin/Main';
+import { Description } from '../SinglePageComponents/Description';
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -14,9 +16,6 @@ const useStyles = makeStyles((theme) =>
       background: '#F7F7F7',
       height: '122px'
     },
-    ImageTextPositioner: {
-      position: 'relative'
-    },
     Yatch: {
       width: ' 100%',
       height: ' 671px',
@@ -24,10 +23,10 @@ const useStyles = makeStyles((theme) =>
     },
 
     CheckIn: {
-      height: '132px',
+      minHeight: '132px',
       width: '100vw',
       backgroundColor: '#071529',
-      paddingLeft: '100px',
+      padding: '3%',
       display: 'flex',
       alignItems: 'center'
     },
@@ -56,26 +55,69 @@ const useStyles = makeStyles((theme) =>
       padding: '0%',
       position: 'relative'
     },
-    ImageText: {
-      position: 'absolute',
-      left: '4.94%',
-      top: '62%',
 
+    ImageTextFont: {
       fontFamily: ' Lato',
       fontStyle: 'normal',
       fontWeight: '600',
       fontSize: ' 60px',
-      color: '#FFFFFF'
+      color: '#FFFFFF',
+      [theme.breakpoints.down('435')]: {
+        fontSize: '32px'
+      }
     },
-    ImageText2: {
+    ImageTextPosition: {
       position: 'absolute',
       left: '4.94%',
-      top: '72.23%',
+      top: '62%'
+    },
+    borderShadow: {},
+    ImageText2Font: {
       fontFamily: ' Lato',
       fontStyle: 'normal',
       fontWeight: 'normal',
       fontSize: ' 24px',
-      color: '#FFFFFF'
+      color: '#FFFFFF',
+      [theme.breakpoints.down('435')]: {
+        fontSize: '16px'
+      }
+    },
+    ImageText2Position: {
+      position: 'absolute',
+      marginTop: '90px',
+      left: '4.94%',
+      [theme.breakpoints.down('435')]: {
+        marginTop: '60px'
+      }
+    },
+    imageTextShadows: {
+      position: 'absolute',
+      top: '45.47%',
+      width: '100%',
+      [theme.breakpoints.down('445')]: {
+        height: '210px',
+        background:
+          'linear-gradient(358.02deg, #091527 1.48%, rgba(9, 21, 39, 0.914539) 37.02%, rgba(9, 21, 39, 0.291523) 72.12%, rgba(9, 21, 39, 0) 83.12%)',
+        position: 'absolute',
+        top: '46.97%'
+      },
+      [theme.breakpoints.down('435')]: {
+        height: '210px',
+        background:
+          'linear-gradient(358.02deg, #091527 1.48%, rgba(9, 21, 39, 0.914539) 37.02%, rgba(9, 21, 39, 0.291523) 72.12%, rgba(9, 21, 39, 0) 83.12%)',
+        position: 'absolute',
+        top: '46.47%'
+      },
+      [theme.breakpoints.down('380')]: {
+        height: '210px',
+        background:
+          'linear-gradient(358.02deg, #091527 1.48%, rgba(9, 21, 39, 0.914539) 37.02%, rgba(9, 21, 39, 0.291523) 72.12%, rgba(9, 21, 39, 0) 83.12%)',
+        position: 'absolute',
+        top: '47.09%'
+      },
+      [theme.breakpoints.down('325')]: {
+        top: '44.95%'
+      }
     }
   })
 );
@@ -83,81 +125,112 @@ const useStyles = makeStyles((theme) =>
 export function Offer() {
   const classes = useStyles();
   return (
-    <Container maxWidth={false} className={classes.Container}>
-      <img src={HeroYatch} alt="HeroYatch" className={classes.Yatch} />
-      <Typography className={classes.ImageText}>ARESTEAS</Typography>
-      <Typography className={classes.ImageText2}>
-        166m | Motor Yacht | 10 Guests
-      </Typography>
-      <Container maxWidth={false} className={classes.CheckIn}>
-        <Grid
-          container
-          spacing={2}
-          style={{ display: 'flex', alignItems: 'center' }}
-        >
+    <>
+      <Container maxWidth={false} className={classes.Container}>
+        <img src={HeroYatch} alt="HeroYatch" className={classes.Yatch} />
+        <div className={classes.imageTextShadows}>
+          <div
+            style={{
+              position: 'relative'
+            }}
+          >
+            <Typography
+              className={clsx(classes.ImageTextFont, classes.ImageTextPosition)}
+            >
+              ARESTEAS
+            </Typography>
+            <Typography
+              className={clsx(
+                classes.ImageText2Font,
+                classes.ImageText2Position
+              )}
+            >
+              166m | Motor Yacht | 10 Guests
+            </Typography>
+          </div>
+        </div>
+
+        <Container maxWidth={false} className={classes.CheckIn}>
           <Grid
-            item
             container
-            md={8}
-            style={{ display: 'flex', alignItems: 'center', gap: '4rem' }}
+            spacing={2}
+            style={{ display: 'flex', alignItems: 'center' }}
           >
             <Grid
               item
-              style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+              container
+              md={12}
+              lg={8}
+              style={{ display: 'flex', alignItems: 'center', gap: '4rem' }}
             >
-              <Checkin />
+              <Grid
+                item
+                style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}
+              >
+                <Main />
+              </Grid>
+              <Grid item>
+                <Typography className={classes.Typography}>
+                  From{' '}
+                  <span
+                    className={clsx(classes.Typography, classes.MiddleText)}
+                  >
+                    €135.000
+                  </span>{' '}
+                  to{' '}
+                  <span
+                    className={clsx(classes.Typography, classes.MiddleText)}
+                  >
+                    {' '}
+                    €145.000
+                  </span>
+                </Typography>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Typography className={classes.Typography}>
-                From{' '}
-                <span className={clsx(classes.Typography, classes.MiddleText)}>
-                  €135.000
-                </span>{' '}
-                to{' '}
-                <span className={clsx(classes.Typography, classes.MiddleText)}>
-                  {' '}
-                  €145.000
-                </span>
-              </Typography>
-            </Grid>
-          </Grid>
 
-          <Grid
-            item
-            container
-            md={4}
-            style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
-          >
-            <Grid>
-              {' '}
-              <FavoriteIcon style={{ color: 'White' }} />
-            </Grid>
-            <Grid>
-              {' '}
-              <Button
-                variant="outlined"
-                size="large"
-                label="Enquire"
-                color="primary"
-                className={clsx(classes.margin, classes.enquire)}
-              >
-                Enquire
-              </Button>
-            </Grid>
-            <Grid>
-              {' '}
-              <Button
-                variant="outlined"
-                size="large"
-                color="primary"
-                className={clsx(classes.margin, classes.Book)}
-              >
-                Book Now
-              </Button>
+            <Grid
+              item
+              container
+              md={4}
+              style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
+            >
+              <Grid>
+                {' '}
+                <FavoriteIcon style={{ color: 'White' }} />
+              </Grid>
+              <Grid>
+                {' '}
+                <Button
+                  variant="outlined"
+                  size="large"
+                  label="Enquire"
+                  color="primary"
+                  className={clsx(classes.margin, classes.enquire)}
+                >
+                  Enquire
+                </Button>
+              </Grid>
+              <Grid>
+                {' '}
+                <Button
+                  variant="outlined"
+                  size="large"
+                  color="primary"
+                  className={clsx(classes.margin, classes.Book)}
+                >
+                  Book Now
+                </Button>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        </Container>
+      </Container>{' '}
+      <Container
+        maxWidth="false"
+        style={{ padding: '0%', marginBottom: '600px' }}
+      >
+        <Description />
       </Container>
-    </Container>
+    </>
   );
 }
