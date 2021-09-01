@@ -6,8 +6,10 @@ import Pic1 from './GalleryPic/Pic1.svg';
 import Pic2 from './GalleryPic/Pic2.svg';
 import MobilePic1 from './Gallery MobileView/MobilePic1.svg';
 import MobilePic2 from './Gallery MobileView/MobilePic2.svg';
-
+import ImageListItemBar from '@material-ui/core/ImageListItemBar';
 import { Grid } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -82,25 +84,25 @@ const itemData = [
 const MobileData = [
   {
     img: MobilePic1,
-    title: 'Image',
+    title: 'Relaxing Jacuzzi',
     author: 'author',
     cols: 2
   },
   {
     img: MobilePic2,
-    title: 'Image',
+    title: 'Gourmet Dining',
     author: 'author',
     cols: 1
   },
   {
     img: MobilePic2,
-    title: 'Image',
+    title: 'Massage Services',
     author: 'author',
     cols: 1
   },
   {
     img: MobilePic2,
-    title: 'Image',
+    title: 'Massage Services',
     author: 'author',
     cols: 1
   },
@@ -125,6 +127,20 @@ export default function Gallery() {
             style={{ height: '450px' }}
           >
             <img src={item.img} alt={item.title} />
+            <ImageListItemBar
+              title={item.title}
+              position="top"
+              actionIcon={
+                <IconButton
+                  aria-label={`star ${item.title}`}
+                  className={classes.icon}
+                >
+                  <StarBorderIcon />
+                </IconButton>
+              }
+              actionPosition="left"
+              className={classes.titleBar}
+            />
           </ImageListItem>
         ))}
       </ImageList>

@@ -9,6 +9,8 @@ import clsx from 'clsx';
 import Main from './checkin/Main';
 import { Description } from '../SinglePageComponents/Description';
 import Gallery from '../SinglePageComponents/Gallery';
+import ImageSlider from '../SinglePageComponents/ImageSlider';
+
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -233,6 +235,7 @@ export function Offer() {
       >
         <Description />
         <Gallery />
+        <ImageSlider />
       </Container>
     </>
   );
