@@ -7,7 +7,7 @@ import Pic2 from './GalleryPic/Pic2.svg';
 import MobilePic1 from './Gallery MobileView/MobilePic1.svg';
 import MobilePic2 from './Gallery MobileView/MobilePic2.svg';
 import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, useTheme } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 
@@ -33,11 +33,14 @@ const useStyles = makeStyles((theme) => ({
   },
   MobileView: {
     display: 'none',
+
     [theme.breakpoints.down('500')]: {
       display: 'block',
       width: '100%',
       marginLeft: '15px',
-      height: 'auto'
+      height: 'auto',
+      background:
+        'linear-gradient(354.05deg, #091527 4.18%, rgba(9, 21, 39, 0.914539) 43.61%, rgba(9, 21, 39, 0) 94.76%)'
     },
     [theme.breakpoints.down('420')]: {
       display: 'block',
@@ -45,8 +48,30 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: 'auto',
       marginRight: 'auto',
       height: 'auto'
+    }
+  },
+  typography: {
+    fontFamily: 'lato',
+    fontStyle: 'normal',
+    fontWeight: 'normal',
+    fortSize: '24px',
+    color: 'white',
+    position: 'relative',
+    display: 'none',
+    background:
+      'linear-gradient(180.05deg, #091527 4.18%, rgba(9, 21, 39, 0.914539) 43.61%, rgba(9, 21, 39, 0) 94.76%)',
+    [theme.breakpoints.down('500')]: {
+      display: 'block',
+      left: '4.30%',
+      top: '18%',
+      padding: '8%'
     },
-    Typography: {}
+    [theme.breakpoints.down('380')]: {
+      display: 'block',
+      left: '0%',
+      top: '18%',
+      padding: '8%'
+    }
   },
   TitleBar: {
     width: '100%',
@@ -93,7 +118,7 @@ const MobileData = [
     img: MobilePic1,
     title: 'Relaxing Jacuzzi',
     author: 'author',
-    cols: 2
+    cols: 1
   },
   {
     img: MobilePic2,
@@ -109,7 +134,7 @@ const MobileData = [
   },
   {
     img: MobilePic2,
-    title: 'Massage Services',
+    title: 'assage Services',
     author: 'author',
     cols: 1
   },
@@ -123,6 +148,7 @@ const MobileData = [
 
 export default function Gallery() {
   const classes = useStyles();
+  const theme = useTheme();
 
   return (
     <div className={classes.root}>
@@ -162,12 +188,14 @@ export default function Gallery() {
       </ImageList>
       {console.log('Before update: ', itemData[0])}
       <Grid container spacing={2}>
-        {MobileData.map((item) => (
+        {MobileData.map((item, i) => (
           <Grid item>
+            <Typography className={classes.typography}>{item.title}</Typography>
             <img
               src={item.img}
               className={classes.MobileView}
               alt={item.title}
+              data-cy={`BoatMobilePic-${i}`}
             />
           </Grid>
         ))}
