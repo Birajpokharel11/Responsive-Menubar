@@ -8,6 +8,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import clsx from 'clsx';
 import Main from './checkin/Main';
 import { Description } from '../SinglePageComponents/Description';
+import Gallery from '../SinglePageComponents/Gallery';
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -69,7 +70,10 @@ const useStyles = makeStyles((theme) =>
     ImageTextPosition: {
       position: 'absolute',
       left: '4.94%',
-      top: '62%'
+      top: '62%',
+      [theme.breakpoints.down('435')]: {
+        marginTop: '50px'
+      }
     },
     borderShadow: {},
     ImageText2Font: {
@@ -87,7 +91,7 @@ const useStyles = makeStyles((theme) =>
       marginTop: '90px',
       left: '4.94%',
       [theme.breakpoints.down('435')]: {
-        marginTop: '60px'
+        marginTop: '100px'
       }
     },
     imageTextShadows: {
@@ -97,9 +101,7 @@ const useStyles = makeStyles((theme) =>
       [theme.breakpoints.down('445')]: {
         height: '210px',
         background:
-          'linear-gradient(358.02deg, #091527 1.48%, rgba(9, 21, 39, 0.914539) 37.02%, rgba(9, 21, 39, 0.291523) 72.12%, rgba(9, 21, 39, 0) 83.12%)',
-        position: 'absolute',
-        top: '46.97%'
+          'linear-gradient(358.02deg, #091527 1.48%, rgba(9, 21, 39, 0.914539) 37.02%, rgba(9, 21, 39, 0.291523) 72.12%, rgba(9, 21, 39, 0) 83.12%)'
       },
       [theme.breakpoints.down('435')]: {
         height: '210px',
@@ -230,6 +232,7 @@ export function Offer() {
         style={{ padding: '0%', marginBottom: '600px' }}
       >
         <Description />
+        <Gallery />
       </Container>
     </>
   );
