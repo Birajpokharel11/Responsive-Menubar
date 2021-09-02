@@ -11,6 +11,10 @@ import { Description } from '../SinglePageComponents/Description';
 import Gallery from '../SinglePageComponents/Gallery';
 import ImageSlider from '../SinglePageComponents/ImageSlider';
 import Accomodation from '../SinglePageComponents/Accomodation';
+import YatchServices from '../SinglePageComponents/YatchServices';
+import Destinations from '../SinglePageComponents/Destinations';
+import Reviews from '../SinglePageComponents/Reviews';
+import Enquire from '../SinglePageComponents/Enquire';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -238,6 +242,10 @@ export function Offer() {
         <Gallery />
         <Accomodation />
         <ImageSlider />
+        <YatchServices />
+        <Destinations />
+        <Reviews />
+        <Enquire />
       </Container>
     </>
   );

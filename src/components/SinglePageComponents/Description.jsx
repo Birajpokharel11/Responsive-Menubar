@@ -12,6 +12,9 @@ import Sauna from './Sauna.svg';
 import Wifi from './Wifi.svg';
 import { ImageSearchSharp } from '@material-ui/icons';
 import clsx from 'clsx';
+import Breadcrumbs from '@material-ui/core/Breadcrumbs';
+import Link from '@material-ui/core/Link';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -159,17 +162,38 @@ export function Description() {
       title: 'Sauna'
     }
   ];
+  function handleClick(event) {
+    event.preventDefault();
+    console.info('You clicked a breadcrumb.');
+  }
   const classes = useStyles();
   return (
     <div style={{ marginBottom: '10%' }}>
-      <Typography
+      <Breadcrumbs
         style={{
           paddingTop: '58px',
           paddingLeft: '100px'
         }}
+        separator={<NavigateNextIcon fontSize="small" />}
+        aria-label="breadcrumb"
       >
-        Home>Yatchs>Atteries
-      </Typography>
+        <Link
+          color="inherit"
+          color="textPrimary"
+          href="/"
+          onClick={handleClick}
+        >
+          Material-UI
+        </Link>
+        <Link
+          color="textPrimary"
+          href="/getting-started/installation/"
+          onClick={handleClick}
+        >
+          Core
+        </Link>
+        <Typography color="">Breadcrumb</Typography>
+      </Breadcrumbs>
       <Box maxWidth="false" className={classes.Box}>
         <div className={classes.TextPosition}>
           <Typography className={classes.Typography1}>

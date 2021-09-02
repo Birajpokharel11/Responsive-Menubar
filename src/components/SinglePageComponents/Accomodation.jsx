@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) =>
     Box: {
       display: 'flex',
       paddingTop: '8%',
-      paddingLeft: '8%',
+      paddingLeft: '6%',
       paddingRight: '11%',
       paddingBottom: '10%',
       [theme.breakpoints.down('815')]: {
