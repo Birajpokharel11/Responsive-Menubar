@@ -1,13 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Button, Container, Grid, Typography, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(() => ({
   root: {
-    background: 'white',
-    padding: '0.5rem'
+    background: '#091527',
+    width: '100%',
+    height: '570px'
   },
   text: {
     textAlign: 'center',
@@ -24,15 +23,31 @@ const Footer = () => {
 
   return (
     <Box className={classes.root}>
-      <Typography className={classes.text}>
-        © {new Date().getFullYear()} DataCenterinvest.Asia, All rights reserved
-      </Typography>
+      <Grid
+        container
+        style={{
+          paddingTop: '80px',
+          paddingLeft: '100px',
+          paddingRight: '100px'
+        }}
+      >
+        <Grid item>
+          <Typography style={{ color: 'white' }}>
+            Level 1. Devonshire House
+            <br /> One Mayfair Place <br />
+            Mayfair, London ,<br />
+            W1J8AJ, ENGLAND
+            <br />
+            <br />
+            info@exclusivegulet.com <br />
+            t. +44 208 144 58 34
+          </Typography>
+        </Grid>
+        <Grid item></Grid>
+        <Grid item></Grid>
+      </Grid>
     </Box>
   );
-};
-
-Footer.propTypes = {
-  className: PropTypes.string
 };
 
 export default Footer;
