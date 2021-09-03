@@ -234,10 +234,7 @@ export function Offer() {
           </Grid>
         </Container>
       </Container>{' '}
-      <Container
-        maxWidth="false"
-        style={{ padding: '0%', marginBottom: '600px' }}
-      >
+      <Container maxWidth="false" style={{ padding: '0%' }}>
         <Description />
         <Gallery />
         <Accomodation />
