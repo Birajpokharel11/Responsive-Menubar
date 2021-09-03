@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) =>
     },
     Yatch: {
       width: ' 100%',
+      display: 'block',
       height: ' 671px',
       objectFit: 'cover'
     },

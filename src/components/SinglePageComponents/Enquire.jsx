@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) =>
       width: ' 100%',
       height: ' 1080px',
       objectFit: 'cover',
+      display: 'block',
       [theme.breakpoints.down('1024')]: {
         height: '859px'
       },
