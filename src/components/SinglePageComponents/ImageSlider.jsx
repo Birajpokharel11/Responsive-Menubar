@@ -44,7 +44,7 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', background: 'red' }}
+      style={{ ...style, right: '100px', display: 'block', background: 'red' }}
       onClick={onClick}
     />
   );
@@ -55,7 +55,13 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: 'block', background: 'green' }}
+      style={{
+        ...style,
+        left: '100px',
+        zIndex: '99',
+        display: 'block',
+        background: 'green'
+      }}
       onClick={onClick}
     />
   );
@@ -97,7 +103,7 @@ export default function ImageSlider() {
     ]
   };
   return (
-    <div style={{ marginLeft: '100px', marginRight: '100px' }}>
+    <div>
       <h2>Custom Arrows</h2>
       <Slider {...settings}>
         {MobileData.map((item) => (

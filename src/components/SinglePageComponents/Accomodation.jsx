@@ -169,12 +169,14 @@ const list = [
 
 export default function Accomodation() {
   const classes = useStyles();
+  const length = list.length;
+  console.log(length);
   return (
     <Box maxWidth="false" className={classes.Box}>
       <div className={classes.TextPosition}>
         <Typography className={classes.FirstTitle}>ACCOMODATION</Typography>
         <Typography className={classes.Typography}>
-          > Corsario's interior layout sleeps up to 12 guests in 6 rooms,
+          {'>'} Corsario's interior layout sleeps up to 12 guests in 6 rooms,
           including a master suite, 1 VIP stateroom, 2 double cabins and 2 twin
           cabins. She is also capable of carrying up to 8 crew onboard to ensure
           a relaxed luxury yacht experience. Timeless styling, beautiful
@@ -184,9 +186,12 @@ export default function Accomodation() {
           <br />
           Corsario's impressive leisure and entertainment facilities make her
           the ideal charter yacht for socialising and entertaining with family
-          and friends. Sauna, Air Conditioning, Deck Jacuzzi, WiFi connection on
-          board. Luxury Charter yacht Corsario is a gulet yacht, read our online
-          guide for more information on gulet Yacht Charter.
+          and friends.
+          <br />
+          <br />
+          Sauna, Air Conditioning, Deck Jacuzzi, WiFi connection on board.
+          Luxury Charter yacht Corsario is a gulet yacht, read our online guide
+          for more information on gulet Yacht Charter.
         </Typography>
         <Grid container spacing="3" className={classes.Grid}>
           {itemData.map((item) => (
@@ -212,25 +217,32 @@ export default function Accomodation() {
         </Grid>
       </div>
       <div className={classes.listPosition}>
-        <Paper square className={classes.Paper}>
+        <Paper square className={classes.Paper} elevation={0}>
           <Typography className={classes.ListTitle}>SPECIFICATION</Typography>
           <List className={classes.tab} style={{ padding: '0, 100px' }}>
-            {list.map((list) => (
-              <>
-                <ListItem>
-                  <ListItemText
-                    className={classes.ListTitle}
-                    primary={list.title}
-                  />
+            {list.map((list, index) => {
+              return (
+                <>
+                  <ListItem>
+                    <ListItemText
+                      className={classes.ListTitle}
+                      primary={list.title}
+                    />
 
-                  <ListItemText
-                    className={classes.listStyle}
-                    primary={list.Number}
-                  />
-                </ListItem>
-                <Divider variant="middle" style={{ marginBottom: '15px' }} />
-              </>
-            ))}
+                    <ListItemText
+                      className={classes.listStyle}
+                      primary={list.Number}
+                    />
+                  </ListItem>
+                  {length !== index + 1 && (
+                    <Divider
+                      variant="middle"
+                      style={{ marginBottom: '15px' }}
+                    />
+                  )}
+                </>
+              );
+            })}
           </List>
         </Paper>
       </div>
