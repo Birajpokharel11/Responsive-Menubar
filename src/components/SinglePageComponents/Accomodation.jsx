@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) =>
       fontStyle: 'normal',
       fontWeight: '300',
       fontSize: '18px',
-      lineHeight: '18px',
+      lineHeight: '21px',
       color: '#2A398D'
     },
     ListTitle: {
@@ -91,6 +91,25 @@ const useStyles = makeStyles((theme) =>
     },
     Grid: {
       paddingTop: '11%'
+    },
+    ship: {
+      fontFamily: 'Lato',
+      fontStyle: 'normal',
+      fontWeight: '300',
+      fontSize: '18px',
+      lineHeight: '22px',
+      color: '#2A398D',
+      display: 'flex',
+      paddingLeft: '40%'
+    },
+    shipnumber: {
+      fontFamily: 'Lato',
+      fontStyle: 'normal',
+      fontWeight: '500',
+      fontSize: '18px',
+      lineHeight: '22px',
+      color: '#2A398D',
+      paddingLeft: '40%'
     }
   })
 );
@@ -98,18 +117,18 @@ const itemData = [
   {
     img: Cabins,
     title: 'Guests',
-    Number: ''
+    Number: '12'
   },
 
   {
     img: Crew,
     title: 'Cabin',
-    Number: ''
+    Number: '6'
   },
   {
     img: Guest,
     title: 'Crew',
-    Number: ''
+    Number: '11'
   }
 ];
 const list = [
@@ -183,22 +202,8 @@ export default function Accomodation() {
             >
               <img src={item.img} alt={item.title} />
               <div>
-                <Typography
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    paddingLeft: '20px'
-                  }}
-                >
-                  {item.title}
-                </Typography>
-                <Typography
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    paddingLeft: '20px'
-                  }}
-                >
+                <Typography className={classes.ship}>{item.title}</Typography>
+                <Typography className={classes.shipnumber}>
                   {item.Number}
                 </Typography>
               </div>
