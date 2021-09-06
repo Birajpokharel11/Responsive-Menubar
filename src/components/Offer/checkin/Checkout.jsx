@@ -98,6 +98,7 @@ export default function CheckOut() {
           aria-label="select merge strategy"
           aria-haspopup="menu"
           onClick={handleToggle}
+          data-cy="Checkoutdropdownarrow"
         >
           <KeyboardArrowDownIcon className={classes.ArrowIcon} />
         </Button>

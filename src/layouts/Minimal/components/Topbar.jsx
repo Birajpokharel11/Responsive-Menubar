@@ -59,7 +59,6 @@ const useStyles = makeStyles((theme) => ({
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '14px',
-    lineHeight: '17px',
     textTransform: 'uppercase',
     color: ' #FFFFFF',
     minWidth: '50px'
@@ -207,30 +206,35 @@ export default function Header(props) {
                 label="YATCHS"
                 component={Link}
                 to="/YATCHS"
+                data-cy="YATCHS"
               />
               <Tab
                 className={classes.tab}
                 label="OFFERS"
                 component={Link}
                 to="/OFFERS"
+                data-cy="OFFERS"
               />
               <Tab
                 className={classes.tab}
                 label="DESTINATIONS"
                 component={Link}
                 to="/DESTINATIONS"
+                data-cy="DESTINATIONS"
               />
               <Tab
                 className={classes.tab}
                 label="BESPOKE EXPERIENCES"
                 component={Link}
                 to="/BESPOKEEXPERIENCES"
+                data-cy="BESPOKEEXPERIENCES"
               />
               <Tab
                 className={classes.tab}
                 label="NEWS $ BLOGS"
                 component={Link}
                 to="/NEWSBLOGS"
+                data-cy="NEWSBLOGS"
               />
               <Tab
                 className={classes.tab}
@@ -240,6 +244,7 @@ export default function Header(props) {
                 ref={anchorRef}
                 aria-controls={tabopen ? 'menu-list-grow' : undefined}
                 onClick={handleToggle}
+                data-cy="MORE"
               />{' '}
               <Popper
                 open={tabopen}
@@ -263,7 +268,8 @@ export default function Header(props) {
                         }
                         className={clsx(classes.tab, classes.Menu)}
                         onClick={handleCloseTab}
-                        to="ABOUTYOU"
+                        to="/ABOUTYOU"
+                        data-cy="ABOUTYOU"
                         component={Link}
                       >
                         ABOUT YOU
@@ -279,6 +285,7 @@ export default function Header(props) {
                         onClick={handleCloseTab}
                         to="/DINNING"
                         component={Link}
+                        data-cy="DINNING"
                       >
                         DINNING
                       </MenuItem>
@@ -289,14 +296,14 @@ export default function Header(props) {
             </Tabs>
           </Hidden>
           <Hidden xsDown>
-            <IconButton color="inherit">
+            <IconButton color="inherit" data-cy="SearchIcon">
               <SearchIcon />
             </IconButton>
-            <IconButton color="inherit">
+            <IconButton color="inherit" data-cy="PhoneEnabledIcon">
               <PhoneEnabledIcon />
             </IconButton>{' '}
           </Hidden>
-          <IconButton color="inherit">
+          <IconButton color="inherit" data-cy="EmailIcon">
             <EmailIcon />
           </IconButton>{' '}
           <Hidden smDown>
@@ -308,10 +315,10 @@ export default function Header(props) {
                 marginTop: '4px'
               }}
             />
-            <IconButton color="inherit">
+            <IconButton color="inherit" data-cy="PersonIcon">
               <PersonIcon />
+              <Typography className={classes.tab}>Members</Typography>
             </IconButton>{' '}
-            <Typography className={classes.tab}>Members</Typography>
           </Hidden>
           <Hidden xsDown>
             <Divider
@@ -330,6 +337,7 @@ export default function Header(props) {
               edge="end"
               onClick={handleDrawerOpen}
               className={clsx(mobileOpen && classes.hide)}
+              data-cy="Menu-Icon"
             >
               <MenuIcon />
             </IconButton>
@@ -337,6 +345,7 @@ export default function Header(props) {
               onClick={handleDrawerClose}
               color="inherit"
               className={clsx(!mobileOpen && classes.hide)}
+              data-cy="Close-Icon"
             >
               <CloseIcon />
             </IconButton>
@@ -364,10 +373,10 @@ export default function Header(props) {
             {' '}
             <Hidden smUp>
               <div>
-                <IconButton color="inherit">
+                <IconButton color="inherit" data-cy="TMB-SearchIcon">
                   <SearchIcon />
                 </IconButton>
-                <IconButton color="inherit">
+                <IconButton color="inherit" data-cy="TMB-PhoneEnabledIcon">
                   <PhoneEnabledIcon />
                 </IconButton>{' '}
               </div>
@@ -381,37 +390,102 @@ export default function Header(props) {
                   marginTop: '4px'
                 }}
               />
-              <IconButton color="inherit">
-                <PersonIcon />
+              <IconButton color="inherit" data-cy="TMB-PersonIcon">
+                <PersonIcon />{' '}
+                <Typography className={classes.tab}>Members</Typography>
               </IconButton>{' '}
-              <Typography className={classes.tab}>Members</Typography>
             </div>
           </div>
 
           <List className={classes.tab}>
-            <ListItem className={classes.listStyle}>
-              <ListItemText primary="YATCHS" />
-            </ListItem>
+            <Button
+              color="inherit"
+              to="/YATCHS"
+              component={Link}
+              onClick={handleDrawerClose}
+              data-cy="TMB-YATCHS"
+            >
+              <ListItem className={classes.listStyle}>
+                <ListItemText primary="YATCHS" />
+              </ListItem>
+            </Button>
             <Divider variant="middle" style={{ backgroundColor: 'white' }} />
-            <ListItem className={classes.listStyle}>
-              <ListItemText primary="OFFERS" />
-            </ListItem>{' '}
+
+            <Button
+              color="inherit"
+              to="/OFFERS"
+              component={Link}
+              data-cy="TMB-OFFERS"
+              onClick={handleDrawerClose}
+            >
+              <ListItem className={classes.listStyle}>
+                <ListItemText primary="OFFERS" />
+              </ListItem>{' '}
+            </Button>
             <Divider variant="middle" style={{ backgroundColor: 'white' }} />
-            <ListItem className={classes.listStyle}>
-              <ListItemText primary="DESTINATIONS" />
-            </ListItem>{' '}
+
+            <Button
+              color="inherit"
+              to="/DESTINATIONS"
+              component={Link}
+              data-cy="TMB-DESTINATIONS"
+              onClick={handleDrawerClose}
+            >
+              <ListItem className={classes.listStyle}>
+                <ListItemText primary="DESTINATIONS" />
+              </ListItem>{' '}
+            </Button>
             <Divider variant="middle" style={{ backgroundColor: 'white' }} />
-            <ListItem className={classes.listStyle}>
-              <ListItemText primary="BESPOKE EXPERIENCES" />
-            </ListItem>{' '}
+
+            <Button
+              color="inherit"
+              to="/BESPOKEEXPERIENCES"
+              component={Link}
+              data-cy="TMB-BESPOKE-EXPERIENCES"
+              onClick={handleDrawerClose}
+            >
+              <ListItem className={classes.listStyle}>
+                <ListItemText primary="BESPOKE EXPERIENCES" />
+              </ListItem>{' '}
+            </Button>
             <Divider variant="middle" style={{ backgroundColor: 'white' }} />
-            <ListItem className={classes.listStyle}>
-              <ListItemText primary="NEWS & BLOGS" />
-            </ListItem>{' '}
+
+            <Button
+              color="inherit"
+              to="/NEWSBLOGS"
+              component={Link}
+              data-cy="TMB-NEWS-BLOGS"
+              onClick={handleDrawerClose}
+            >
+              <ListItem className={classes.listStyle}>
+                <ListItemText primary="NEWS & BLOGS" />
+              </ListItem>{' '}
+            </Button>
             <Divider variant="middle" style={{ backgroundColor: 'white' }} />
-            <ListItem className={classes.listStyle}>
-              <ListItemText primary="MORE" />
-            </ListItem>{' '}
+
+            <Button
+              color="inherit"
+              to="/ABOUTYOU"
+              component={Link}
+              data-cy="TMB-ABOUT-YOU"
+              onClick={handleDrawerClose}
+            >
+              <ListItem className={classes.listStyle}>
+                <ListItemText primary="ABOUTYOU" />
+              </ListItem>{' '}
+            </Button>
+            <Divider variant="middle" style={{ backgroundColor: 'white' }} />
+            <Button
+              color="inherit"
+              to="/DINNING"
+              component={Link}
+              data-cy="TMB-Dinning"
+              onClick={handleDrawerClose}
+            >
+              <ListItem className={classes.listStyle}>
+                <ListItemText primary="Dinning" />
+              </ListItem>{' '}
+            </Button>
             <Divider variant="middle" style={{ backgroundColor: 'white' }} />
           </List>
         </div>

@@ -1,7 +1,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Button, Container, Grid, Typography } from '@material-ui/core';
+import {
+  Button,
+  Container,
+  Grid,
+  Typography,
+  IconButton
+} from '@material-ui/core';
 import HeroYatch from './HeroYatch.svg';
 import Checkin from './checkin/Checkin';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -205,8 +211,10 @@ export function Offer() {
               style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
             >
               <Grid>
-                {' '}
-                <FavoriteIcon style={{ color: 'White' }} />
+                <IconButton data-cy="FavouriteIcon">
+                  {' '}
+                  <FavoriteIcon style={{ color: 'White' }} />
+                </IconButton>
               </Grid>
               <Grid>
                 {' '}
@@ -216,6 +224,7 @@ export function Offer() {
                   label="Enquire"
                   color="primary"
                   className={clsx(classes.margin, classes.enquire)}
+                  data-cy="Enquire"
                 >
                   Enquire
                 </Button>
@@ -227,6 +236,7 @@ export function Offer() {
                   size="large"
                   color="primary"
                   className={clsx(classes.margin, classes.Book)}
+                  data-cy="BookNow"
                 >
                   Book Now
                 </Button>

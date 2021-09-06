@@ -100,6 +100,7 @@ export default function Checkin() {
           aria-haspopup="menu"
           onClick={handleToggle}
           className={classes.ButtonGroup}
+          data-cy="Checkindropdownarrow"
         >
           <KeyboardArrowDownIcon className={classes.ArrowIcon} />
         </Button>
