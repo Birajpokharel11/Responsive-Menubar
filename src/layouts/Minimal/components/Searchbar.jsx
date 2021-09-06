@@ -6,10 +6,8 @@ import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: '2px 4px',
     display: 'flex',
-    alignItems: 'center',
-    width: '295px',
+    width: '70%',
     height: '52.73px'
   },
   input: {
@@ -33,7 +31,7 @@ export default function Searchbar() {
       <Paper component="form" className={classes.root}>
         <InputBase className={classes.input} placeholder="Email" />
       </Paper>
-      <div style={{ flexGrow: 0.1 }} />
+      <div style={{ flexGrow: 0.3 }} />
       <Button
         style={{ backgroundColor: 'white', marginnLeft: '10%' }}
         disableElevation

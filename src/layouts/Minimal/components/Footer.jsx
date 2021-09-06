@@ -70,9 +70,9 @@ const Footer = () => {
       <Grid
         container
         style={{
-          paddingTop: '80px',
-          paddingLeft: '100px',
-          paddingRight: '100px'
+          paddingTop: '12%',
+          paddingLeft: '14%',
+          paddingRight: '14%'
         }}
       >
         <Grid item md={4} style={{ color: 'white', fontFamily: 'lato' }}>

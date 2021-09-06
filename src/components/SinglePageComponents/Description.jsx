@@ -126,6 +126,17 @@ const useStyles = makeStyles((theme) =>
         paddingLeft: '10%',
         width: '113px'
       }
+    },
+    Pictext: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '20px',
+      fontFamily: 'Lato',
+      fontStyle: 'normal',
+      fontWeight: '300',
+      fontSize: '18px',
+      lineHeight: '22px',
+      color: '#2A398D'
     }
   })
 );
@@ -211,7 +222,11 @@ export function Description() {
             create an unforgettable custom itinerary for her lucky guests.
           </Typography>
           <div>
-            <img src={Aresteas} className={classes.mobileImage} />
+            <img
+              src={Aresteas}
+              className={classes.mobileImage}
+              data-cy="Atesteas"
+            />
           </div>
           <Typography className={classes.Typography2}>
             AMENITIES & ENTERTAINMENT
@@ -236,13 +251,7 @@ export function Description() {
                 }}
               >
                 <img src={item.img} alt={item.title} />
-                <Typography
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    padding: '20px'
-                  }}
-                >
+                <Typography className={classes.Pictext}>
                   {item.title}
                 </Typography>
               </Grid>

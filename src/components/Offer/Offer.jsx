@@ -39,9 +39,9 @@ const useStyles = makeStyles((theme) =>
 
     CheckIn: {
       minHeight: '132px',
-      width: '100vw',
+      width: '100%',
       backgroundColor: '#071529',
-      padding: '3%',
+      padding: ' 3%',
       display: 'flex',
       alignItems: 'center'
     },
@@ -187,64 +187,66 @@ export function Offer() {
               </Grid>
               <Grid item>
                 <Typography className={classes.Typography}>
-                  From{' '}
+                  From
                   <span
                     className={clsx(classes.Typography, classes.MiddleText)}
                   >
                     €135.000
-                  </span>{' '}
-                  to{' '}
+                  </span>
+                  to
                   <span
                     className={clsx(classes.Typography, classes.MiddleText)}
                   >
-                    {' '}
                     €145.000
                   </span>
                 </Typography>
               </Grid>
             </Grid>
 
-            <Grid
-              item
-              container
-              md={4}
-              style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}
-            >
-              <Grid>
-                <IconButton data-cy="FavouriteIcon">
-                  {' '}
-                  <FavoriteIcon style={{ color: 'White' }} />
-                </IconButton>
-              </Grid>
-              <Grid>
-                {' '}
-                <Button
-                  variant="outlined"
-                  size="large"
-                  label="Enquire"
-                  color="primary"
-                  className={clsx(classes.margin, classes.enquire)}
-                  data-cy="Enquire"
-                >
-                  Enquire
-                </Button>
-              </Grid>
-              <Grid>
-                {' '}
-                <Button
-                  variant="outlined"
-                  size="large"
-                  color="primary"
-                  className={clsx(classes.margin, classes.Book)}
-                  data-cy="BookNow"
-                >
-                  Book Now
-                </Button>
+            <Grid item container md={4}>
+              <Grid
+                item
+                container
+                spacing={0}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Grid item auto>
+                  <IconButton data-cy="FavouriteIcon">
+                    <FavoriteIcon style={{ color: 'White' }} />
+                  </IconButton>
+                </Grid>
+                <Grid item md container spacing={1}>
+                  <Grid item md auto>
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      label="Enquire"
+                      color="primary"
+                      className={clsx(classes.margin, classes.enquire)}
+                      data-cy="Enquire"
+                    >
+                      Enquire
+                    </Button>
+                  </Grid>
+
+                  <Grid item md>
+                    <Button
+                      variant="outlined"
+                      size="large"
+                      color="primary"
+                      className={clsx(classes.margin, classes.Book)}
+                      data-cy="BookNow"
+                    >
+                      Book Now
+                    </Button>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
         </Container>
-      </Container>{' '}
+      </Container>
       <Container maxWidth="false" style={{ padding: '0%' }}>
         <Description />
         <Gallery />
