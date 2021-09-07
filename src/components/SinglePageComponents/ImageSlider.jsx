@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import MobilePic1 from './Gallery MobileView/MobilePic1.svg';
 import MobilePic2 from './Gallery MobileView/MobilePic2.svg';
 
@@ -44,7 +42,12 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, right: '100px', display: 'block', background: 'red' }}
+      style={{
+        ...style,
+        right: '100px',
+        zIndex: '1',
+        display: 'block'
+      }}
       onClick={onClick}
     />
   );
@@ -58,9 +61,8 @@ function SamplePrevArrow(props) {
       style={{
         ...style,
         left: '100px',
-        zIndex: '99',
-        display: 'block',
-        background: 'green'
+        zIndex: '1',
+        display: 'block'
       }}
       onClick={onClick}
     />
@@ -72,7 +74,10 @@ export default function ImageSlider() {
     dots: true,
     infinite: true,
     slidesToShow: 3,
+    autoplay: true,
+    autoplaySpeed: 1000,
     slidesToScroll: 1,
+    centerMode: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     responsive: [
@@ -104,16 +109,15 @@ export default function ImageSlider() {
   };
   return (
     <div>
-      <h2>Custom Arrows</h2>
       <Slider {...settings}>
-        {MobileData.map((item) => (
+        {MobileData.map((item, index) => (
           <div>
             <img
               src={item.img}
+              data-cy={`images-slider-pic-${index}`}
               style={{
-                width: '95%',
+                width: '98%',
                 maxheight: '500px',
-                objectFit: 'cover',
                 display: 'flex',
                 gap: '2rem'
               }}

@@ -9,18 +9,9 @@ import {
   IconButton
 } from '@material-ui/core';
 import HeroYatch from './HeroYatch.svg';
-import Checkin from './checkin/Checkin';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import clsx from 'clsx';
 import Main from './checkin/Main';
-import { Description } from '../SinglePageComponents/Description';
-import Gallery from '../SinglePageComponents/Gallery';
-import ImageSlider from '../SinglePageComponents/ImageSlider';
-import Accomodation from '../SinglePageComponents/Accomodation';
-import YatchServices from '../SinglePageComponents/YatchServices';
-import Destinations from '../SinglePageComponents/Destinations';
-import Reviews from '../SinglePageComponents/Reviews';
-import Enquire from '../SinglePageComponents/Enquire';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -246,16 +237,6 @@ export function Offer() {
             </Grid>
           </Grid>
         </Container>
-      </Container>
-      <Container maxWidth="false" style={{ padding: '0%' }}>
-        <Description />
-        <Gallery />
-        <Accomodation />
-        <ImageSlider />
-        <YatchServices />
-        <Destinations />
-        <Reviews />
-        <Enquire />
       </Container>
     </>
   );

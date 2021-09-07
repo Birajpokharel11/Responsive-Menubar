@@ -2,13 +2,12 @@ import React from 'react';
 import { Switch, Redirect } from 'react-router-dom';
 import { RouteWithLayout, PublicRoute, PrivateRoute } from './components';
 import { Minimal as MinimalLayout, Main as MainLayout } from '../layouts';
-import { Offer } from '../components/Offer/Offer';
-
+import Components from '../components/Offer/AllComponents/Components';
 const Routes = () => {
   return (
     <Switch>
       <RouteWithLayout
-        component={Offer}
+        component={Components}
         exact
         layout={MinimalLayout}
         path="/"
