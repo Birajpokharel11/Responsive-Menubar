@@ -271,9 +271,11 @@ export default function MaxWidthDialog() {
                 <Typography className={classes.Questions}>
                   Sample Itinerary
                 </Typography>
-                <Typography className={classes.DownloadBtn}>
-                  Download
-                </Typography>
+                <Button data-cy="Download-Sample">
+                  <Typography className={classes.DownloadBtn}>
+                    Download
+                  </Typography>
+                </Button>
               </div>
               <Box pt={1}>
                 <Typography className={classes.Answers}>

@@ -9,6 +9,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Amat from './DestinationPic/Amat.svg';
 import Tube from './DestinationPic/Tube.svg';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import MobileSlider from './MobileSlider';
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -48,6 +51,9 @@ const useStyles = makeStyles((theme) =>
 );
 function Destinations() {
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('500'));
+
   return (
     <Paper
       elevation="0"
@@ -86,79 +92,83 @@ function Destinations() {
           paddingTop: '3%'
         }}
       >
-        <Grid container justifyContent="space-around">
-          <Grid item xs>
-            <Card className={classes.root}>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image={Amat}
-                  style={{
-                    width: '400px',
-                    height: '400px',
-                    objectFit: 'contain'
-                  }}
-                  title="Contemplative Reptile"
-                />
-                <CardContent style={{ backgroundColor: '#F5F0E4' }}>
-                  <Typography
-                    gutterBottom
-                    style={{ textAlign: 'center' }}
+        {!matches ? (
+          <Grid container justifyContent="space-around">
+            <Grid item xs>
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    height="140"
+                    image={Amat}
+                    style={{
+                      width: '400px',
+                      height: '400px',
+                      objectFit: 'contain'
+                    }}
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent style={{ backgroundColor: '#F5F0E4' }}>
+                    <Typography
+                      gutterBottom
+                      style={{ textAlign: 'center' }}
+                      className={classes.listitemText}
+                    >
+                      Cyclades Islands Greece
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                      className={classes.listitemText2}
+                    >
+                      A perfect yacht charter getaway in probably one of the
+                      most romantic, beautiful, and charming place on earth.
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+            <Grid item xs>
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardMedia
+                    style={{
+                      width: '400px',
+                      height: '400px',
+                      objectFit: 'contain'
+                    }}
+                    component="img"
+                    alt="Contemplative Reptile"
+                    height="140"
+                    image={Tube}
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent
+                    style={{ backgroundColor: '#F5F0E4' }}
                     className={classes.listitemText}
                   >
-                    Cyclades Islands Greece
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    className={classes.listitemText2}
-                  >
-                    A perfect yacht charter getaway in probably one of the most
-                    romantic, beautiful, and charming place on earth.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+                    <Typography gutterBottom style={{ textAlign: 'center' }}>
+                      Dalmatian Islands Croatia
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                      className={classes.listitemText2}
+                    >
+                      The Cyclades are a group of Greek Islands, best known for
+                      the islands of Santorini and Mykonos.
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
           </Grid>
-          <Grid item xs>
-            <Card className={classes.root}>
-              <CardActionArea>
-                <CardMedia
-                  style={{
-                    width: '400px',
-                    height: '400px',
-                    objectFit: 'contain'
-                  }}
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="140"
-                  image={Tube}
-                  title="Contemplative Reptile"
-                />
-                <CardContent
-                  style={{ backgroundColor: '#F5F0E4' }}
-                  className={classes.listitemText}
-                >
-                  <Typography gutterBottom style={{ textAlign: 'center' }}>
-                    Dalmatian Islands Croatia
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    className={classes.listitemText2}
-                  >
-                    The Cyclades are a group of Greek Islands, best known for
-                    the islands of Santorini and Mykonos.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        </Grid>
+        ) : (
+          <MobileSlider />
+        )}
       </Container>
     </Paper>
   );

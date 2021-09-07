@@ -20,7 +20,7 @@ export default function Components() {
   return (
     <>
       <Container maxWidth="false" style={{ padding: '0%' }}>
-        {true && <SpecialOffer />}
+        {false && <SpecialOffer />}
         <Offer />
         <Description />
         <Gallery />
