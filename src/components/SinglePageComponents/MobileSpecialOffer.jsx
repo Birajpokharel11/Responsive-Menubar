@@ -68,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
       height: ' 80px'
     },
     [theme.breakpoints.down('xs')]: {
+      position: 'fixed',
       width: '100%'
     }
   },

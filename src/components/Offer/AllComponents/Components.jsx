@@ -17,12 +17,14 @@ import {
 } from '@material-ui/core';
 import SpecialOffer from '../../SinglePageComponents/SpecialOffer';
 import MobileSpecialOffer from '../../SinglePageComponents/MobileSpecialOffer';
+import ScrollSpecialOffer from '../../SinglePageComponents/ScrollSpecialOffer';
 export default function Components() {
   return (
     <>
       <Container maxWidth="false" style={{ padding: '0%' }}>
-        {true && <MobileSpecialOffer />}
+        {true && <SpecialOffer />}
         <Offer />
+        <ScrollSpecialOffer />
         <Description />
         <Gallery />
         <Accomodation />
