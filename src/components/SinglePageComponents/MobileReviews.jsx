@@ -155,7 +155,7 @@ export default function MobileReviewsSlider() {
                 know showed patience and professionalism throughout what was no
                 doubt a very challenging week.”
               </Typography>
-              <Typography>August 2020</Typography>
+              <Typography className={classes.Date}>August 2020</Typography>
             </CardContent>
           </CardActionArea>
         </Card>
@@ -187,7 +187,7 @@ export default function MobileReviewsSlider() {
                 know showed patience and professionalism throughout what was no
                 doubt a very challenging week.”
               </Typography>
-              <Typography>August 2020</Typography>
+              <Typography className={classes.Date}>August 2020</Typography>
             </CardContent>
           </CardActionArea>
         </Card>

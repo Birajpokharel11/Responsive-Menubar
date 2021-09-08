@@ -25,13 +25,22 @@ const useStyles = makeStyles((theme) =>
       maxWidth: 345,
       boxShadow: 'none'
     },
+    Date: {
+      fontFamily: 'Lato',
+      fontStyle: 'normal',
+      fontWeight: '300',
+      fontSize: '14px',
+      color: '#2A398D',
+      width: '79px',
+      textAlign: 'center'
+    },
     listHeader: {
       fontFamily: 'Lato',
       fontStyle: 'normal',
       fontWeight: '300',
-      fontSize: '32px',
-      color: '#2A398D',
-      textAlign: 'center'
+      fontSize: '14px',
+      lineHeight: '17px',
+      color: '#2A398D'
     },
     listText: {
       fontFamily: 'Lato',
@@ -132,7 +141,9 @@ function Reviews() {
                       professionalism throughout what was no doubt a very
                       challenging week.”
                     </Typography>
-                    <Typography>August 2020</Typography>
+                    <Typography className={classes.Date}>
+                      August 2020
+                    </Typography>
                   </CardContent>
                 </CardActionArea>
               </Card>
@@ -167,7 +178,9 @@ function Reviews() {
                       professionalism throughout what was no doubt a very
                       challenging week.”
                     </Typography>
-                    <Typography>August 2020</Typography>
+                    <Typography className={classes.Date}>
+                      August 2020
+                    </Typography>
                   </CardContent>
                 </CardActionArea>
               </Card>
