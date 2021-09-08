@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) =>
       fontFamily: 'Lato',
       fontStyle: 'normal',
       fontWeight: '300',
-      fontSize: '14px',
+      fontSize: '32px',
       lineHeight: '17px',
       color: '#2A398D'
     },

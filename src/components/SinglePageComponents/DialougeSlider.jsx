@@ -1,4 +1,6 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/alt-text */
+import React, { Component } from 'react';
+import Slider from 'react-slick';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -17,7 +19,6 @@ import Vector from './SpecialOfferPic/Vector.svg';
 import { Box, Grid, Paper, Typography } from '@material-ui/core';
 import { Container } from 'react-bootstrap';
 import { StylesContext } from '@material-ui/styles';
-import DialougeSlider from './DialougeSlider';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -177,7 +178,40 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function MaxWidthDialog() {
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        right: '100px',
+        zIndex: '1',
+        display: 'block'
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        left: '10px',
+        zIndex: '1',
+        display: 'block',
+        background: 'red'
+      }}
+      onClick={onClick}
+    />
+  );
+}
+
+export default function DialougeSlider() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
@@ -193,23 +227,46 @@ export default function MaxWidthDialog() {
   const handleTextopen = () => {
     setText((prev) => !prev);
   };
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 3,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
   return (
-    <React.Fragment>
-      <Button
-        className={classes.Button}
-        data-cy="ViewOffer"
-        onClick={handleClickOpen}
-      >
-        <Typography className={classes.ButtonTypo}>View Offer</Typography>
-      </Button>
-      <Dialog
-        style={{ height: '112vh' }}
-        fullWidth={fullWidth}
-        maxWidth="md"
-        open={open}
-        onClose={handleClose}
-      >
-        {/* <DialogContent>
+    <div>
+      <Slider>
+        <DialogContent>
           <Typography className={classes.Title}>
             {' '}
             There is a special offer for this yacht!
@@ -341,9 +398,140 @@ export default function MaxWidthDialog() {
             </Button>
           </div>
         </DialogContent>
-        <DialogActions></DialogActions> */}
-        <DialougeSlider />
-      </Dialog>
-    </React.Fragment>
+
+        <DialogContent>
+          <Typography className={classes.Title}>
+            {' '}
+            There is a special offer for this yacht!
+          </Typography>
+          <Typography className={classes.SubHeading}>
+            I’m the offer description text. Nice to meet you. You can write on
+            me whatever you want.
+          </Typography>
+          <Box>
+            <Paper className={classes.Border}>
+              <Grid container direction="row" alignItems="center">
+                <Grid item md={8}>
+                  <Typography className={classes.Reservation}>
+                    Aresteas Reservation Details
+                  </Typography>
+                  <br />
+                  <div
+                    style={{ display: 'flex', justifyContent: 'flex-start' }}
+                  >
+                    <Typography className={classes.Checkin}>
+                      Check-in Date / Destination
+                    </Typography>
+                    <Typography className={classes.CheckOut}>
+                      21.05.2021 / Marmaris
+                    </Typography>
+                  </div>
+                  <br />
+                  <div
+                    style={{ display: 'flex', justifyContent: 'flex-start' }}
+                  >
+                    <Typography className={classes.Checkin}>
+                      Check-out Date / Destination
+                    </Typography>
+                    <Typography className={classes.CheckOut}>
+                      31.05.2021 / Marmaris
+                    </Typography>
+                  </div>
+                </Grid>
+                <div style={{ flexGrow: '1' }} />
+                <Grid item md>
+                  <Typography className={classes.LineThroughText}>
+                    € 155.000
+                  </Typography>
+                  <br />
+                  <Typography className={classes.Discount}>
+                    € 155.000
+                  </Typography>
+                  <br />
+                  <Button
+                    style={{
+                      minWidth: '190px',
+                      maxHeight: '52px',
+                      backgroundColor: '  #AB3996'
+                    }}
+                    data-cy="Claim Now"
+                    onClick={handleClickOpen}
+                  >
+                    <Typography className={classes.ButtonTypo}>
+                      Claim Now
+                    </Typography>
+                  </Button>
+                  <br />
+                  <br />
+                  <Typography className={classes.Cancellation}>
+                    Free cancellation
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Box>
+          {text && (
+            <Box
+              style={{
+                marginLeft: '4%',
+                marginRight: '4%',
+                marginTop: '2%',
+                marginBottom: '2%'
+              }}
+            >
+              <div style={{ display: 'flex', gap: '3rem' }}>
+                <Typography className={classes.Questions}>
+                  Sample Itinerary
+                </Typography>
+                <Button data-cy="Download-Sample">
+                  <Typography className={classes.DownloadBtn}>
+                    Download
+                  </Typography>
+                </Button>
+              </div>
+              <Box pt={1}>
+                <Typography className={classes.Answers}>
+                  <span className={classes.Questions}>
+                    How can I go to check-in destination?
+                  </span>
+                  <br />
+                  You can go there via Blabla Airport
+                </Typography>
+              </Box>
+              <Box pt={2}>
+                <Typography className={classes.Answers}>
+                  <span className={classes.Questions}>What is included?</span>
+                  <br />
+                  Wages and food for the crew, Croation 13% of VAI, fuel for
+                  main engines up to 4 hours cruising per day, fuel for 24
+                  hours/day of generator use, complete linen and towels, yacht
+                  insurance, service on board, sojourn taxes, yacht cleaning,
+                  Wi-Fi.
+                </Typography>
+              </Box>
+            </Box>
+          )}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              paddingBottom: '1%'
+            }}
+          >
+            <Button
+              onClick={handleTextopen}
+              data-cy="more-Details-less-Details"
+            >
+              <Box>
+                <Typography className={classes.Alldetails}>
+                  Show {text ? 'Less' : 'More'} Details About This Offer
+                </Typography>
+              </Box>
+            </Button>
+          </div>
+        </DialogContent>
+      </Slider>
+    </div>
   );
 }
