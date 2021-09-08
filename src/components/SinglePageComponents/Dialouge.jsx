@@ -32,13 +32,37 @@ const useStyles = makeStyles((theme) => ({
   formControlLabel: {
     marginTop: theme.spacing(1)
   },
+  Button: {
+    width: '190px',
+    height: '52px',
+    backgroundColor: '  #AB3996',
+
+    [theme.breakpoints.down('900')]: {
+      paddingTop: '15px',
+      paddingBottom: '15px',
+      paddingRight: '16px',
+      paddingLeft: '17px',
+      width: '150px',
+      height: ' 52px'
+    },
+    [theme.breakpoints.down('900')]: {
+      width: '120px',
+      height: ' 52px'
+    }
+  },
   ButtonTypo: {
     fontFamily: 'lato',
     fontStyle: 'normal',
     fontWeight: '500',
     fontSize: '18px',
     lineHeight: '23px',
-    color: 'white'
+    color: 'white',
+    [theme.breakpoints.down('360')]: {
+      width: '827px',
+      minHeight: ' 22px',
+      lineHeight: '22px',
+      textAlign: 'center'
+    }
   },
   Title: {
     fontFamily: 'lato',
@@ -170,11 +194,7 @@ export default function MaxWidthDialog() {
   return (
     <React.Fragment>
       <Button
-        style={{
-          minWidth: '190px',
-          maxHeight: '52px',
-          backgroundColor: '  #AB3996'
-        }}
+        className={classes.Button}
         data-cy="ViewOffer"
         onClick={handleClickOpen}
       >

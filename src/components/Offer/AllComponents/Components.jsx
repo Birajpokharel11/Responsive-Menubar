@@ -16,11 +16,12 @@ import {
   IconButton
 } from '@material-ui/core';
 import SpecialOffer from '../../SinglePageComponents/SpecialOffer';
+import MobileSpecialOffer from '../../SinglePageComponents/MobileSpecialOffer';
 export default function Components() {
   return (
     <>
       <Container maxWidth="false" style={{ padding: '0%' }}>
-        {false && <SpecialOffer />}
+        {true && <MobileSpecialOffer />}
         <Offer />
         <Description />
         <Gallery />
