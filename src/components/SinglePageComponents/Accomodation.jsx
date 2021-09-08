@@ -29,6 +29,18 @@ const useStyles = makeStyles((theme) =>
       paddingBottom: '10%',
       [theme.breakpoints.down('815')]: {
         display: 'block'
+      },
+      [theme.breakpoints.down('450')]: {
+        paddingTop: '8%',
+        paddingLeft: '6%',
+        paddingRight: '5%',
+        paddingBottom: '10%'
+      },
+      [theme.breakpoints.down('380')]: {
+        paddingTop: '8%',
+        paddingLeft: '5%',
+        paddingRight: '2%',
+        paddingBottom: '10%'
       }
     },
     TextPosition: {
@@ -37,7 +49,11 @@ const useStyles = makeStyles((theme) =>
     },
 
     listPosition: {
-      flex: '30%'
+      flex: '30%',
+      [theme.breakpoints.down('380')]: {
+        paddingLeft: '0%',
+        paddingRight: '8%'
+      }
     },
     Paper: {
       width: '100%',
@@ -48,7 +64,8 @@ const useStyles = makeStyles((theme) =>
         width: '83%'
       },
       [theme.breakpoints.down('352')]: {
-        width: '83%'
+        width: '83%',
+        padding: '35px 28px'
       }
     },
     FirstTitle: {
@@ -63,13 +80,14 @@ const useStyles = makeStyles((theme) =>
       color: '#2A398D'
     },
     Typography: {
-      maxwidth: '820px',
-      minheight: '226px',
+      maxWidth: '670px',
+      minHeight: '226px',
       fontFamily: 'Lato',
       fontStyle: 'normal',
       fontWeight: '300',
       fontSize: '18px',
-      lineHeight: '21px',
+      lineHeight: '25px',
+      textAlign: 'justify',
       color: '#2A398D'
     },
     ListTitle: {

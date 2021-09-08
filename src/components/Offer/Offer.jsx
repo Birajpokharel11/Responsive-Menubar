@@ -113,14 +113,14 @@ const useStyles = makeStyles((theme) =>
         background:
           'linear-gradient(358.02deg, #091527 1.48%, rgba(9, 21, 39, 0.914539) 37.02%, rgba(9, 21, 39, 0.291523) 72.12%, rgba(9, 21, 39, 0) 83.12%)',
         position: 'absolute',
-        top: '46.47%'
+        top: '47.47%'
       },
       [theme.breakpoints.down('380')]: {
         height: '210px',
         background:
           'linear-gradient(358.02deg, #091527 1.48%, rgba(9, 21, 39, 0.914539) 37.02%, rgba(9, 21, 39, 0.291523) 72.12%, rgba(9, 21, 39, 0) 83.12%)',
         position: 'absolute',
-        top: '47.09%'
+        top: '45.09%'
       },
       [theme.breakpoints.down('325')]: {
         top: '44.95%'

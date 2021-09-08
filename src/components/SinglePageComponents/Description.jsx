@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) =>
       color: '#2A398D',
       paddingTop: '20px',
       [theme.breakpoints.down('560')]: {
-        width: '343px'
+        width: '363px',
+        textAlign: 'justify'
       },
       [theme.breakpoints.down('385')]: {
         width: '300px',
@@ -97,11 +98,15 @@ const useStyles = makeStyles((theme) =>
         paddingLeft: '5%'
       },
       [theme.breakpoints.down('560')]: {
-        paddingRight: '6%',
-        paddingLeft: '6%'
+        paddingRight: '2%',
+        paddingLeft: '9%'
       },
       [theme.breakpoints.down('385')]: {
-        paddingRight: '3%',
+        paddingRight: '0%',
+        paddingLeft: '9%'
+      },
+      [theme.breakpoints.down('325')]: {
+        paddingRight: '1%',
         paddingLeft: '3%'
       }
     },

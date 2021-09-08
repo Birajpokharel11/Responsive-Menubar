@@ -64,20 +64,21 @@ const useStyles = makeStyles((theme) => ({
       width: '454px',
       height: ' 80px'
     },
-    [theme.breakpoints.down('sm')]: {
-      minWidth: '343px',
+    [theme.breakpoints.down('450')]: {
+      width: '343px',
       height: ' 80px',
+      position: 'fixed',
       zIndex: '1'
     },
-    [theme.breakpoints.down('xs')]: {
-      width: '100%'
+    [theme.breakpoints.down('330')]: {
+      maxWidth: '303px'
     }
   },
   timetext: {
     fontFamily: 'lato',
     fontStyle: 'normal',
     fontWeight: '300',
-    fontSize: '18px',
+    fontSize: '16px',
     lineHeight: '23px',
     color: '#2A398D',
     textAlign: 'center'
