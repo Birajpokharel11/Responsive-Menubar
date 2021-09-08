@@ -1,6 +1,12 @@
 import React from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { Container, Grid, Paper, Typography } from '@material-ui/core';
+import {
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery
+} from '@material-ui/core';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -10,6 +16,9 @@ import Button from '@material-ui/core/Button';
 import Amat from './DestinationPic/Amat.svg';
 import Tube from './DestinationPic/Tube.svg';
 import Rating from '@material-ui/lab/Rating';
+import MobileReviewsSlider from './MobileReviews';
+import { useTheme } from '@material-ui/core/styles';
+
 const useStyles = makeStyles((theme) =>
   createStyles({
     root: {
@@ -21,7 +30,8 @@ const useStyles = makeStyles((theme) =>
       fontStyle: 'normal',
       fontWeight: '300',
       fontSize: '32px',
-      color: '#2A398D'
+      color: '#2A398D',
+      textAlign: 'center'
     },
     listText: {
       fontFamily: 'Lato',
@@ -49,6 +59,8 @@ const useStyles = makeStyles((theme) =>
 );
 function Reviews() {
   const [value, setValue] = React.useState(2);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('500'));
   const classes = useStyles();
   return (
     <Paper
@@ -73,7 +85,7 @@ function Reviews() {
         </Typography>
         <Typography
           className={classes.listText}
-          style={{ display: 'flex', textAlign: 'center', paddingTop: '48px' }}
+          style={{ display: 'flex', textAlign: 'justify', paddingTop: '48px' }}
         >
           A text like discover those destinations with your perfect yacht will
           be written here. Perfect location and the perfect yacht for your
@@ -88,76 +100,82 @@ function Reviews() {
           paddingTop: '3%'
         }}
       >
-        <Grid container justifyContent="space-around">
-          <Grid item xs>
-            <Card className={classes.root}>
-              <CardActionArea>
-                <CardContent style={{ backgroundColor: '#F5F0E4' }}>
-                  <Typography gutterBottom className={classes.listitemText}>
-                    Cyclades Islands Greece
-                  </Typography>
-                  <Typography gutterBottom className={classes.listitemText}>
-                    portugal
-                  </Typography>
-                  <Rating
-                    name="read-only"
-                    value={value}
-                    readOnly
-                    style={{ paddingBottom: '2%' }}
-                  />
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    className={classes.listitemText2}
-                  >
-                    “Thank you all so so so much for all of your help and
-                    patience with getting through this kosher week. My family
-                    had the best trip of their lives so I take my hat off to you
-                    all. Please pass on my sincere thanks also to Captain Askin
-                    and his team who I know showed patience and professionalism
-                    throughout what was no doubt a very challenging week.”
-                  </Typography>
-                  <Typography>August 2020</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
+        {!matches ? (
+          <Grid container justifyContent="space-around">
+            <Grid item xs>
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardContent style={{ backgroundColor: '#F5F0E4' }}>
+                    <Typography gutterBottom className={classes.listitemText}>
+                      Cyclades Islands Greece
+                    </Typography>
+                    <Typography gutterBottom className={classes.listitemText}>
+                      portugal
+                    </Typography>
+                    <Rating
+                      name="read-only"
+                      value={value}
+                      readOnly
+                      style={{ paddingBottom: '2%' }}
+                    />
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                      className={classes.listitemText2}
+                    >
+                      “Thank you all so so so much for all of your help and
+                      patience with getting through this kosher week. My family
+                      had the best trip of their lives so I take my hat off to
+                      you all. Please pass on my sincere thanks also to Captain
+                      Askin and his team who I know showed patience and
+                      professionalism throughout what was no doubt a very
+                      challenging week.”
+                    </Typography>
+                    <Typography>August 2020</Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+            <Grid item xs>
+              <Card className={classes.root}>
+                <CardActionArea>
+                  <CardContent style={{ backgroundColor: '#F5F0E4' }}>
+                    <Typography gutterBottom className={classes.listitemText}>
+                      Cyclades Islands Greece
+                    </Typography>
+                    <Typography gutterBottom className={classes.listitemText}>
+                      portugal
+                    </Typography>
+                    <Rating
+                      name="read-only"
+                      value={value}
+                      readOnly
+                      style={{ paddingBottom: '2%' }}
+                    />
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                      className={classes.listitemText2}
+                    >
+                      “Thank you all so so so much for all of your help and
+                      patience with getting through this kosher week. My family
+                      had the best trip of their lives so I take my hat off to
+                      you all. Please pass on my sincere thanks also to Captain
+                      Askin and his team who I know showed patience and
+                      professionalism throughout what was no doubt a very
+                      challenging week.”
+                    </Typography>
+                    <Typography>August 2020</Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
           </Grid>
-          <Grid item xs>
-            <Card className={classes.root}>
-              <CardActionArea>
-                <CardContent style={{ backgroundColor: '#F5F0E4' }}>
-                  <Typography gutterBottom className={classes.listitemText}>
-                    Cyclades Islands Greece
-                  </Typography>
-                  <Typography gutterBottom className={classes.listitemText}>
-                    portugal
-                  </Typography>
-                  <Rating
-                    name="read-only"
-                    value={value}
-                    readOnly
-                    style={{ paddingBottom: '2%' }}
-                  />
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    className={classes.listitemText2}
-                  >
-                    “Thank you all so so so much for all of your help and
-                    patience with getting through this kosher week. My family
-                    had the best trip of their lives so I take my hat off to you
-                    all. Please pass on my sincere thanks also to Captain Askin
-                    and his team who I know showed patience and professionalism
-                    throughout what was no doubt a very challenging week.”
-                  </Typography>
-                  <Typography>August 2020</Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        </Grid>
+        ) : (
+          <MobileReviewsSlider />
+        )}
       </Container>
     </Paper>
   );
