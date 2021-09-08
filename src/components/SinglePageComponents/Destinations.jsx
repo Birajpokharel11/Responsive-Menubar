@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) =>
       fontStyle: 'normal',
       fontWeight: '300',
       fontSize: '32px',
-      color: '#2A398D'
+      color: '#2A398D',
+      textAlign: 'center'
     },
     listText: {
       fontFamily: 'Lato',
@@ -77,7 +78,7 @@ function Destinations() {
         </Typography>
         <Typography
           className={classes.listText}
-          style={{ display: 'flex', textAlign: 'center', paddingTop: '48px' }}
+          style={{ display: 'flex', textAlign: 'justify', paddingTop: '48px' }}
         >
           A text like discover those destinations with your perfect yacht will
           be written here. Perfect location and the perfect yacht for your
