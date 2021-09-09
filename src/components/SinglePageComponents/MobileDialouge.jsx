@@ -4,15 +4,21 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-
-import CloseIcon from '@material-ui/icons/Close';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Box, Grid, IconButton, Paper, Typography } from '@material-ui/core';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import FormControl from '@material-ui/core/FormControl';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import Switch from '@material-ui/core/Switch';
+import Vector from './SpecialOfferPic/Vector.svg';
+import IconButton from '@material-ui/core/IconButton';
+import { Box, Grid, Paper, Typography, useTheme } from '@material-ui/core';
 import { Container } from 'react-bootstrap';
 import { StylesContext } from '@material-ui/styles';
 import DialougeSlider from './DialougeSlider';
-import MobileDialouge from './MobileDialouge';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -28,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   formControlLabel: {
     marginTop: theme.spacing(1)
   },
+
   Button: {
     width: '190px',
     height: '52px',
@@ -60,15 +67,34 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center'
     }
   },
+  ButtonClaimButton: {
+    minWidth: '343px',
+    maxHeight: '52px',
+    backgroundColor: '  #AB3996',
+    [theme.breakpoints.down('xs')]: {
+      minWidth: '300px'
+    }
+  },
+  ButtonClaimTypo: {
+    fontFamily: 'lato',
+    fontStyle: 'normal',
+    fontWeight: '500',
+    fontSize: '18px',
+    lineHeight: '22px',
+    width: '87px',
+    maxHeight: '48px',
+    color: 'white',
+    textTransform: 'capitalize'
+  },
   Title: {
     fontFamily: 'lato',
     fontStyle: 'normal',
     fontWeight: '300',
-    fontSize: '32px',
-    lineHeight: '38px',
+    fontSize: '24px',
+    lineHeight: '29px',
     color: '#2A398D',
-    minWidth: '505px',
-    minHeight: '38px',
+    maxWidth: '343px',
+    minHeight: '58px',
     textAlign: 'center'
   },
   SubHeading: {
@@ -77,29 +103,26 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '300',
     fontSize: '18px',
     color: '#2A398D',
-    minWidth: '755px',
-    maxHeight: '22px',
+    maxWidth: '343px',
+    minHeight: '66px',
     textAlign: 'center',
-    paddingBottom: '2%',
-    [theme.breakpoints.down('800')]: {
-      minWidth: '500px',
-      paddingBottom: '9%'
-    }
+    paddingBottom: '2%'
   },
   Border: {
     border: '3px dashed #AB3996',
-    width: '92%',
-    marginLeft: '2%',
-    marginRight: '2%',
-    padding: '2%',
-    background: '#F7F7F7'
+    maxWidth: '343px',
+    minHeight: '191px',
+    background: '#F7F7F7',
+    padding: '2%'
   },
   Reservation: {
     fontFamily: 'lato',
     fontStyle: 'normal',
     fontWeight: '300',
     fontSize: '24px',
-    color: '#2A398D'
+    lineHeight: '29px',
+    color: '#2A398D',
+    textAlign: 'center'
   },
   Checkin: {
     fontFamily: 'lato',
@@ -108,7 +131,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '16px',
     lineHeight: '19px',
     color: '#2A398D',
-    paddingRight: '2%'
+    paddingRight: '2%',
+    textAlign: 'center'
   },
   CheckOut: {
     fontFamily: 'lato',
@@ -116,7 +140,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'normal',
     fontSize: '18px',
     lineHeight: '21.6px',
-    color: '#2A398D'
+    color: '#2A398D',
+    textAlign: 'center'
   },
   LineThroughText: {
     textAlign: 'center',
@@ -138,7 +163,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'normal',
     fontSize: '12px',
     lineHeight: '38px',
-    textAlign: 'right',
+    textAlign: 'left',
     color: ' #2A398D'
   },
   Alldetails: {
@@ -148,7 +173,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '16px',
     lineHeight: '19px',
     color: '#AB3996',
-    textAlign: 'right'
+    width: '235px',
+    height: '20px'
   },
   Questions: {
     fontFamily: 'lato',
@@ -173,16 +199,19 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '18px',
     lineHeight: '22px',
     color: '#AB3996'
+  },
+  dialouge: {
+    marginTop: '15%',
+    [theme.breakpoints.down('xs')]: { marginTop: '25%' }
   }
 }));
 
-export default function MaxWidthDialog() {
+export default function MobileDialouge() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [fullWidth, setFullWidth] = React.useState(true);
   const [text, setText] = React.useState(false);
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('500'));
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -204,13 +233,13 @@ export default function MaxWidthDialog() {
         <Typography className={classes.ButtonTypo}>View Offer</Typography>
       </Button>
       <Dialog
-        style={{ height: '112vh' }}
+        fullScreen
         fullWidth={fullWidth}
         maxWidth="md"
         open={open}
         onClose={handleClose}
+        className={classes.dialouge}
       >
-        {' '}
         <IconButton
           aria-label="close"
           style={{ display: 'felx', justifyContent: 'flex-end' }}
@@ -229,69 +258,28 @@ export default function MaxWidthDialog() {
           </Typography>
           <Box>
             <Paper className={classes.Border}>
-              <Grid container direction="row" alignItems="center">
-                <Grid item md={8}>
-                  <Typography className={classes.Reservation}>
-                    Aresteas Reservation Details
+              <Typography className={classes.Reservation}>
+                Aresteas Reservation Details
+              </Typography>
+              <br />
+              <div>
+                <div>
+                  <Typography className={classes.Checkin}>
+                    Check-in Date / Destination
+                  </Typography>
+                  <Typography className={classes.CheckOut}>
+                    21.05.2021 / Marmaris
                   </Typography>
                   <br />
-                  <div
-                    style={{ display: 'flex', justifyContent: 'flex-start' }}
-                  >
-                    <Typography className={classes.Checkin}>
-                      Check-in Date / Destination
-                    </Typography>
-                    <Typography className={classes.CheckOut}>
-                      21.05.2021 / Marmaris
-                    </Typography>
-                  </div>
-                  <br />
-                  <div
-                    style={{ display: 'flex', justifyContent: 'flex-start' }}
-                  >
-                    <Typography className={classes.Checkin}>
-                      Check-out Date / Destination
-                    </Typography>
-                    <Typography className={classes.CheckOut}>
-                      31.05.2021 / Marmaris
-                    </Typography>
-                  </div>
-                </Grid>
-                <div style={{ flexGrow: '1' }} />
-                <Grid item md>
-                  <Typography className={classes.LineThroughText}>
-                    € 155.000
+                  <Typography className={classes.Checkin}>
+                    Check-out Date / Destination
+                  </Typography>
+                  <Typography className={classes.CheckOut}>
+                    31.05.2021 / Marmaris
                   </Typography>
                   <br />
-                  <Typography className={classes.Discount}>
-                    € 155.000
-                  </Typography>
-                  <br />
-                  <Button
-                    style={{
-                      minWidth: '190px',
-                      maxHeight: '52px',
-                      backgroundColor: '  #AB3996'
-                    }}
-                    data-cy="Claim Now"
-                    onClick={handleClickOpen}
-                  >
-                    <Typography className={classes.ButtonTypo}>
-                      Claim Now
-                    </Typography>
-                  </Button>
-                  <br />
-                  <br />
-                  <Button
-                    style={{ float: 'right' }}
-                    data-cy="Free-Cancellation"
-                  >
-                    <Typography className={classes.Cancellation}>
-                      Free cancellation
-                    </Typography>
-                  </Button>
-                </Grid>
-              </Grid>
+                </div>
+              </div>
             </Paper>
           </Box>
           {text && (
@@ -355,7 +343,46 @@ export default function MaxWidthDialog() {
             </Button>
           </div>
         </DialogContent>
-        <DialogActions></DialogActions>
+        <DialogActions>
+          <Paper elevation={0} style={{ width: '100%' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center'
+              }}
+            >
+              <Typography className={classes.LineThroughText}>
+                €155.000{' '}
+              </Typography>
+              <Typography className={classes.Discount}>€135.000</Typography>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center'
+              }}
+            >
+              <Button className={classes.ButtonClaimButton}>
+                <Typography className={classes.ButtonClaimTypo}>
+                  Claim Now
+                </Typography>
+              </Button>
+            </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center'
+              }}
+            >
+              <Button className={classes.Cancellation}>
+                Free cancellation
+              </Button>
+            </div>
+          </Paper>
+        </DialogActions>
       </Dialog>
     </React.Fragment>
   );

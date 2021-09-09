@@ -78,7 +78,11 @@ function Destinations() {
         </Typography>
         <Typography
           className={classes.listText}
-          style={{ display: 'flex', textAlign: 'justify', paddingTop: '48px' }}
+          style={{
+            display: 'flex',
+            textAlign: 'justify',
+            paddingTop: '48px'
+          }}
         >
           A text like discover those destinations with your perfect yacht will
           be written here. Perfect location and the perfect yacht for your

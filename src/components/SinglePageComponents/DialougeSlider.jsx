@@ -1,4 +1,5 @@
-/* eslint-disable jsx-a11y/alt-text */
+// /* eslint-disable jsx-a11y/alt-text */
+// /* eslint-disable jsx-a11y/alt-text */
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import { makeStyles } from '@material-ui/core/styles';
@@ -183,11 +184,11 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
+      data-cy="sample arrow button"
       style={{
-        ...style,
-        right: '100px',
+        right: '1020px',
         zIndex: '1',
-        display: 'block'
+        color: 'red'
       }}
       onClick={onClick}
     />
@@ -199,12 +200,13 @@ function SamplePrevArrow(props) {
   return (
     <div
       className={className}
+      data-cy="sample arrow button"
       style={{
         ...style,
-        left: '10px',
+        left: '1020px',
         zIndex: '1',
         display: 'block',
-        background: 'red'
+        color: 'red'
       }}
       onClick={onClick}
     />
@@ -234,14 +236,14 @@ export default function DialougeSlider() {
     autoplay: true,
     autoplaySpeed: 1000,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
+    nextArrow: <div>Hello</div>,
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           infinite: true,
           dots: true
         }

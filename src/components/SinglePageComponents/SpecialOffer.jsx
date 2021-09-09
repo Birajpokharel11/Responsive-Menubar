@@ -6,14 +6,16 @@ import {
   Grid,
   makeStyles,
   Paper,
-  Typography
+  Typography,
+  useMediaQuery
 } from '@material-ui/core';
 import Vector from './SpecialOfferPic/Vector.svg';
 import Dialouge from './Dialouge';
-import { useTheme } from '@material-ui/core/styles';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { RotateRightTwoTone } from '@material-ui/icons';
 import ScrollSpecialOffer from './ScrollSpecialOffer';
+import MobileDialouge from './MobileDialouge';
+import { useTheme } from '@material-ui/core/styles';
+
 const useStyles = makeStyles((theme) => ({
   initialBox: {
     backgroundColor: '#F6F6F6',
@@ -147,7 +149,7 @@ function SpecialOffer() {
             <br />
             Minutes
           </Typography>
-          <Dialouge />
+          {mobile ? <MobileDialouge /> : <Dialouge />}
         </Box>
       </Box>
     </Box>

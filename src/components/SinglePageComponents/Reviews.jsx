@@ -39,8 +39,8 @@ const useStyles = makeStyles((theme) =>
       fontStyle: 'normal',
       fontWeight: '300',
       fontSize: '32px',
-      lineHeight: '17px',
-      color: '#2A398D'
+      color: '#2A398D',
+      textAlign: 'center'
     },
     listText: {
       fontFamily: 'Lato',

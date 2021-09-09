@@ -19,6 +19,15 @@ const useStyles = makeStyles((theme) =>
       maxWidth: 345,
       boxShadow: 'none'
     },
+    Date: {
+      fontFamily: 'Lato',
+      fontStyle: 'normal',
+      fontWeight: '300',
+      fontSize: '14px',
+      color: '#2A398D',
+      width: '79px',
+      textAlign: 'center'
+    },
     listHeader: {
       fontFamily: 'Lato',
       fontStyle: 'normal',
