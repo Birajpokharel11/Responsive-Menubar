@@ -21,20 +21,6 @@ import DialougeSlider from './DialougeSlider';
 import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
-  form: {
-    display: 'flex',
-    flexDirection: 'column',
-    margin: 'auto',
-    width: 'fit-content'
-  },
-  formControl: {
-    marginTop: theme.spacing(2),
-    minWidth: 120
-  },
-  formControlLabel: {
-    marginTop: theme.spacing(1)
-  },
-
   Button: {
     width: '190px',
     height: '52px',
@@ -81,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '500',
     fontSize: '18px',
     lineHeight: '22px',
-    width: '87px',
+    width: '100%',
     maxHeight: '48px',
     color: 'white',
     textTransform: 'capitalize'
@@ -242,8 +228,9 @@ export default function MobileDialouge() {
       >
         <IconButton
           aria-label="close"
-          style={{ display: 'felx', justifyContent: 'flex-end' }}
+          style={{ justifyContent: 'flex-end' }}
           onClick={handleClose}
+          data-cy="Close-Icon-2"
         >
           <CloseIcon />
         </IconButton>
@@ -295,7 +282,7 @@ export default function MobileDialouge() {
                 <Typography className={classes.Questions}>
                   Sample Itinerary
                 </Typography>
-                <Button data-cy="Download-Sample">
+                <Button data-cy="Download-Sample-Mobile">
                   <Typography className={classes.DownloadBtn}>
                     Download
                   </Typography>
@@ -365,7 +352,10 @@ export default function MobileDialouge() {
               }}
             >
               <Button className={classes.ButtonClaimButton}>
-                <Typography className={classes.ButtonClaimTypo}>
+                <Typography
+                  className={classes.ButtonClaimTypo}
+                  data-cy="Mobile-Claim-Now"
+                >
                   Claim Now
                 </Typography>
               </Button>
@@ -377,7 +367,10 @@ export default function MobileDialouge() {
                 alignItems: 'center'
               }}
             >
-              <Button className={classes.Cancellation}>
+              <Button
+                className={classes.Cancellation}
+                data-cy="Free-Cancellation-Mobile"
+              >
                 Free cancellation
               </Button>
             </div>

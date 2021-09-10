@@ -213,8 +213,9 @@ export default function MaxWidthDialog() {
         {' '}
         <IconButton
           aria-label="close"
-          style={{ display: 'felx', justifyContent: 'flex-end' }}
+          style={{ justifyContent: 'flex-end' }}
           onClick={handleClose}
+          data-cy="Close-Icon-1"
         >
           <CloseIcon />
         </IconButton>

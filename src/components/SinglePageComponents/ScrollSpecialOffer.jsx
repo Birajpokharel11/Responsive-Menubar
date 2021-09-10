@@ -15,44 +15,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 const useStyles = makeStyles((theme) => ({
-  initialBox: {
-    backgroundColor: '#F6F6F6',
-    width: '100%',
-    height: '158px',
-    posiition: 'relative'
-  },
-  Image: {
-    minHeight: '120px',
-    minWidth: '100px',
-    posiition: 'absolute',
-    [theme.breakpoints.down('655')]: {
-      width: '232px',
-      height: '269px',
-      transform: 'rotate(360)'
-    }
-  },
-  Typography: {
-    fontFamily: 'lato',
-    fontStyle: 'normal',
-    fontWeight: '300',
-    fontSize: '26px',
-    lineHeight: '31px',
-    lineSpacing: '0.1em',
-    color: '#2A398D',
-    textTransform: 'uppercase',
-    [theme.breakpoints.down('900')]: {
-      fontSize: '24px',
-      lineHeight: '20px',
-      textAlign: 'center'
-    },
-    [theme.breakpoints.down('655')]: {
-      fontSize: '18px',
-      lineHeight: '22px',
-      textAlign: 'center',
-      paddingBottom: '16px'
-    }
-  },
   Box: {
+    display: 'none',
     border: '3px dashed #AB3996',
     boxSizing: 'border-box',
     width: '230px',
@@ -60,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '155px',
     position: 'fixed',
     top: '70%',
-    left: '100px',
+    left: '10%',
     zIndex: '1',
     [theme.breakpoints.down(450)]: {
       display: 'none'
@@ -74,25 +38,6 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '23px',
     color: '#2A398D',
     textAlign: 'center'
-  },
-
-  ButtonTypo: {
-    fontFamily: 'lato',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: '18px',
-    lineHeight: '23px',
-    color: 'white'
-  },
-  Box2: {
-    [theme.breakpoints.down('655')]: {
-      position: 'absolute',
-      left: '10%'
-    },
-    [theme.breakpoints.down('380')]: {
-      position: 'absolute',
-      left: '4%'
-    }
   }
 }));
 function ScrollSpecialOffer() {

@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('450')]: {
       width: '343px',
       height: ' 80px',
-      position: 'fixed',
+      position: 'sticky',
       zIndex: '1'
     },
     [theme.breakpoints.down('330')]: {
